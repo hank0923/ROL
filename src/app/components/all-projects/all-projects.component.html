@@ -1,0 +1,140 @@
+<ngx-spinner
+bdOpacity = 0.4
+bdColor = "rgba(255,255,255,0.35)"
+size = "default"
+color = "#565656"
+type = "ball-clip-rotate"
+[fullScreen] = "true"
+>
+</ngx-spinner>
+
+
+<nz-content class="c-page-height">
+  <div nz-row class="my-1">
+    <div nz-col nzSpan="24">
+      <!-- <h2 class="float-left" *ngIf="radioValue == 0">All Projects</h2> -->
+      <div class="float-left c-select-width"  *ngIf="radioValue == 1">
+      	  <nz-select
+	      [(ngModel)]="listOfTagOptions"
+	      nzMode="tags"
+	       [nzMaxTagCount]="1"
+	      [nzTokenSeparators]="[',']"
+	      nzPlaceHolder="Filter by location"
+	    >
+	      <nz-option *ngFor="let option of listOfFilterLocation" [nzLabel]="option.text" [nzValue]="option.value"></nz-option>
+	    </nz-select>
+	    <nz-select class="ml-1" [(ngModel)]="sortedValue" nzAllowClear nzPlaceHolder="Sort by">
+	        <nz-option nzValue="recent" nzLabel="Most recent"></nz-option>
+	        <nz-option nzValue="popular" nzLabel="Most Popular"></nz-option>
+      	</nz-select>
+      </div>	
+      <nz-radio-group class="float-right" [(ngModel)]="radioValue" [nzSize]="'middle'">
+        <label nz-radio-button nzValue="0" nz-tooltip nzTooltipTitle="Table view"><i nz-icon nzType="table" nzTheme="outline"></i></label>
+        <label nz-radio-button nzValue="1" nz-tooltip nzTooltipTitle="Card view"><i nz-icon nzType="border" nzTheme="outline"></i></label>
+      </nz-radio-group>
+    </div>
+  </div>
+  <div class="inner-content" *ngIf="radioValue == 0">
+    <nz-table #nzTable nzSize="middle" [nzPageSize]="8" [nzData]="listOfData" [nzScroll]="{ x: '1000px'}">
+      <thead>
+        <tr class="font-small">
+          <th class="c-tablecell-width"></th>
+          <th nzWidth="200px" nzLeft="0px" nzCustomFilter>Project Name <i nz-th-extra class="ant-table-filter-icon" nz-icon nz-dropdown #dropdown="nzDropdown" nzType="search" [nzDropdownMenu]="menu" [class.ant-table-filter-open]="dropdown.nzVisible" nzTrigger="click" nzPlacement="bottomRight" [nzClickHide]="false" nzTableFilter></i></th>
+          <th nzWidth="120px">Creator</th>
+          <th nzWidth="100px" nzShowSort>Start</th>
+          <th nzWidth="100px" nzShowSort>End</th>
+          <th nzWidth="100px" nzShowFilter [nzFilters]="listOfFilterLocation" ><i nz-icon nzType="environment" nzTheme="outline" class="mr-05"></i>Location</th>
+          <!-- <th nzWidth="300px">Project Description</th> -->
+          <th nzWidth="140px">Volunteers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-template ngFor let-data [ngForOf]="nzTable.data">
+          <tr>
+            <td nzShowExpand [(nzExpand)]="mapOfExpandData[data.id]" class="c-tablecell-width">  </td>
+            <td nzWidth="200px" nzLeft="0px"  class="text-left text-bold">
+              <span class="to-detail" (click)="goToProjectDetail(data)">{{ data.projectName }}</span>
+              <!-- <nz-tag class="ml-1" *ngIf="data.isNew" [nzColor]="'blue'">NEW</nz-tag> -->
+            </td>
+            <td nzWidth="120px">
+              <div class="d-flex flex-direction-column">
+                <!-- <nz-avatar nzText="{{data.creatorAvatar}}" style="color:#f56a00; background-color:#fde3cf;"></nz-avatar> -->
+                <!-- <div style="width:32px; margin-right:0.5em;" ><nz-avatar class="mr-05" nzText="{{data.creatorAvatar}}"></nz-avatar></div> -->
+                <div>{{ data.creator }}</div>
+                <div class="font-small">{{ data.creatorTitle }}</div>
+              </div>
+            </td>
+            <td nzWidth="100px">{{ data.createdDate }}</td>
+            <td nzWidth="100px">{{ data.endDate }}</td>
+            <td nzWidth="100px">{{ data.location }}</td>
+            <!-- <td nzWidth="300px">{{ data.projectDescription }}</td> -->
+            <td nzWidth="140px">
+              <span *ngFor="let v of data.volunteers | slice:0:3; let i=index" >
+                <nz-avatar class="mr-05 mb-05" nzIcon="user" nzSrc="{{ v.vAvatar }}" nz-tooltip nzTooltipTitle="{{ v.vName }}"></nz-avatar>
+              </span>
+              <nz-avatar *ngIf="data.moreVolenteerNumber >= 2" class="mr-05 mb-05" nzText="+{{data.moreVolenteerNumber}}"></nz-avatar>
+
+            </td>
+          </tr>
+          <tr [nzExpand]="mapOfExpandData[data.id]">
+            <td colspan="7">
+              <div nz-row>
+                <div nz-col nzSpan="4" class="d-flex justify-content-center align-items-center">
+                  <img src="{{data.picture}}" style="padding:1em;width: 100%">
+                </div>
+                <div nz-col nzSpan="20" style="padding: 0 1em;">
+                  <h4>Project Description</h4>
+                  <p>{{ data.projectDescription }} ... <a class="ml-2" (click)="goToProjectDetail(data)">Learn More</a></p>
+                  <div>
+                    <nz-tag>Developers</nz-tag>
+                    <nz-tag>Product Managers</nz-tag>
+                    <nz-tag>UX/UI</nz-tag>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </nz-table>
+    <!-- Search Dropdown -->
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <div class="search-box">
+        <input type="text" nz-input placeholder="Search name" />
+        <button nz-button nzSize="middle" nzType="primary" class="search-button">
+          Search
+        </button>
+        <button nz-button nzSize="middle">Reset</button>
+      </div>
+    </nz-dropdown-menu>
+
+  </div>
+  <div *ngIf="radioValue == 1">
+    <div nz-row nzGutter="16" [@listOfData]="listOfData?.length">
+      <div nz-col [nzSm]="{span: 24}" [nzMd]="{span:12}" [nzLg]="{span:8}" [nzXl]="{span:6}" class="gutter-row" *ngFor="let data of listOfData">
+        <nz-card nzHoverable [nzCover]="coverTemplate" class="mb-1 c-card">
+          <h2 class="line-height-normal"  (click)="goToProjectDetail(data)">{{data.projectName}}</h2>
+          <nz-avatar nzIcon="user" nzSrc="{{data.creatorAvatar}}" nzSize="middle" class="ml-0 mr-05" nz-tooltip nzTooltipTitle="{{data.creator}}"></nz-avatar>
+          <span *ngFor="let v of data.volunteers | slice:0:4; let i=index">
+            <nz-avatar class="mr-05" nzSize="small" nzIcon="user" nzSrc="{{ v.vAvatar }}" nz-tooltip nzTooltipTitle="{{ v.vName }}"></nz-avatar>
+          </span>
+          
+          <nz-avatar *ngIf="data.moreVolenteerNumber >= 2" nzSize="small" nzText="+{{data.moreVolenteerNumber - 1}}"></nz-avatar>
+          
+          
+          <div class="d-flex justify-content-space-between  my-1">
+            <div nz-text nzType="secondary" nzSize="small">{{data.createdDate}} - {{data.endDate}}</div>
+            <div nz-text nzType="secondary" nzSize="small"><i nz-icon nzType="environment" nzTheme="outline"></i>{{data.location}}</div>
+          </div>
+          <p class="c-project-description">{{data.projectDescription}}</p>
+        </nz-card>
+        <ng-template #coverTemplate>
+          <img src=" {{data.picture}}" style=" width: 100%; height: 144px;object-fit: cover">
+        </ng-template>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button nz-button nzSize="large" nzType="{{moreBtn}}" (click)="moreProject()" [nzLoading]="isLoading_more">{{moreText}}</button>
+    </div>
+  </div>
+</nz-content>

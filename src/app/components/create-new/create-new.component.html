@@ -1,0 +1,142 @@
+<nz-content class="c-page-height">
+  <div class="mt-2" nz-row nzType="flex" nzJustify="center">
+    <div nz-col nzSpan="18" class="inner-content bg-white px-2">
+      <nz-page-header class="px-0 mb-1" nzBackIcon>
+        <!--title-->
+        <nz-page-header-title>Create Project</nz-page-header-title>
+      </nz-page-header>
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="projectName">Project Name</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Enter your project name">
+            <input nz-input formControlName="projectName" id="projectName" placeholder="Enter project name" />
+          </nz-form-control>
+        </nz-form-item>
+         <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="creatorPhoto">
+            <span>
+              Cover Picture <i nz-icon nz-tooltip nzTitle="A picture is more than a thousand words. Upload a cover picture for your project that can help you describe your story." nzType="question-circle" nzTheme="outline"></i>
+            </span>
+          </nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/" nzListType="picture-card" [(nzFileList)]="coverFileList" [nzShowButton]="coverFileList.length <1" [nzShowUploadList]="coverShowUploadList" [nzPreview]="coverHandlePreview">
+              <i nz-icon nzType="plus" class="c-icon-size"></i>
+              <div class="ant-upload-text">Upload</div>
+            </nz-upload>
+            <nz-modal [nzVisible]="coverPreviewVisible" [nzFooter]="null" (nzOnCancel)="coverPreviewVisible = false">
+              <ng-template #modalContent>
+                <img [src]="coverPreviewImage" [ngStyle]="{ width: '100%' }" />
+              </ng-template>
+            </nz-modal>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dateRange" nzRequired>Select date</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Select the date range for your project">
+            <nz-range-picker formControlName="dateRange" id="dateRange" (ngModelChange)="onChange($event)"></nz-range-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="location" nzRequired>
+            <span>
+              Location <i nz-icon nz-tooltip nzTitle="This is where this project will happen. Select 'Remote' if you want to recruit volenteer globally." nzType="question-circle" nzTheme="outline"></i>
+            </span>
+          </nz-form-label>
+          <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Select where this project will happen">
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select location" formControlName="location" id="location">
+              <nz-option nzLabel="Remote" nzValue="Remote"></nz-option>
+              <nz-option nzLabel="Shanghai" nzValue="Shanghai"></nz-option>
+              <nz-option nzLabel="Sydney" nzValue="Sydney"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="projectDescription" nzRequired>
+            Description
+          </nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Project description is required">
+            <textarea nz-input placeholder="Description about your project" [nzAutosize]="{ minRows: 6, maxRows: 12 }" formControlName="projectDescription" id="projectDescription"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="skills" nzRequired>Recruiting Skills</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Choose the skillset you need">
+            <nz-select nzMode="multiple" formControlName="skills" id="skills" nzPlaceHolder="Select the skillset you need">
+              <nz-option nzLabel="Project Management" nzValue="PM"></nz-option>
+              <nz-option nzLabel="Developer" nzValue="Developer"></nz-option>
+              <nz-option nzLabel="Designer" nzValue="Designer"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="skillsDescription" nzRequired>
+            <span>
+              Skills Description <i nz-icon nz-tooltip nzTitle="Describe what skillset you need for your project" nzType="question-circle" nzTheme="outline"></i>
+            </span>
+          </nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Skillset description is required">
+            <textarea nz-input placeholder="Enter skillset description" [nzAutosize]="{ minRows: 6, maxRows: 12 }" formControlName="skillsDescription" id="skillsDescription"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24">
+            Approved Charity
+          </nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <label nz-checkbox formControlName="charity">Yes </label>
+            <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/" *ngIf="validateForm.value.charity" class="ml-1">
+              <button nz-button><i nz-icon nzType="upload"></i><span>Upload supporting document</span></button>
+            </nz-upload>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-divider nzText="Your Details" nzOrientation="left"></nz-divider>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="creatorName">Name</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Enter your name">
+            <input nz-input formControlName="creatorName" id="creatorName" placeholder="Enter your name" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="creatorEmail">E-mail</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+            <input nz-input formControlName="creatorEmail" id="creatorEmail" placeholder="Enter your E-mail" type="email" />
+            <ng-template #emailErrorTpl let-control>
+              <ng-container *ngIf="control.hasError('email')">
+                The input is not valid E-mail!
+              </ng-container>
+              <ng-container *ngIf="control.hasError('required')">
+                Please input your E-mail!
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="creatorPhoto">
+            <span>
+              Photo <i nz-icon nz-tooltip nzTitle="Upload your picture will let others know you more and more likely to join." nzType="question-circle" nzTheme="outline"></i>
+            </span>
+          </nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/" nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length <1" [nzShowUploadList]="showUploadList" [nzPreview]="handlePreview">
+              <i nz-icon nzType="plus" class="c-icon-size"></i>
+              <div class="ant-upload-text">Upload</div>
+            </nz-upload>
+            <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible = false">
+              <ng-template #modalContent>
+                <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+              </ng-template>
+            </nz-modal>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-divider></nz-divider>
+        <nz-form-item>
+          <nz-form-control [nzOffset]="6" [nzSm]="14" [nzXs]="24" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+            <!-- <button nz-button nzType="primary" [disabled]="!validateForm.valid">Submit</button> -->
+            <button nz-button nzSize="large" nzType="primary" (click)="goToMyProject('success')">Submit</button>
+            <button nz-button nzSize="large" class="ml-1" (click)="goToAllProject()">Cancel</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</nz-content>

@@ -1,0 +1,36 @@
+<!-- <nz-affix (nzChange)="onChange($event)"> -->
+
+<ngx-spinner
+bdOpacity = 0.4
+bdColor = "rgba(255,255,255,0.35)"
+size = "default"
+color = "#565656"
+type = "ball-clip-rotate"
+[fullScreen] = "true"
+>
+</ngx-spinner>
+
+
+<nz-header class="bg-white"  *ngIf="visible">
+  <div class="logo" (click)="toAllProjects()"><img style="width: 100px;" src="../assets/logo.png">  </div>
+  <!-- <button nz-button nzType="link"><i nz-icon nzType="search" class="text-white"></i></button> -->
+  <div class="c-nav-style">
+    <a (click)="toAllProjects()" [routerLink]="['/all-projects']" [routerLinkActive]="'is-active'">All Projects</a>
+    <a (click)="toMyProjects()" [routerLink]="['/my-projects']" [routerLinkActive]="'is-active'">My Projects</a>
+    <a (click)="toApprovalList()" [routerLink]="['/approval-list']" [routerLinkActive]="'is-active'">Approval List</a>
+  </div>
+  <div class="float-right">
+    <a class=" mr-1" (click)="logout()">Logout</a>
+    <button nz-button nzType="primary" (click)="createProject()"><i nz-icon nzType="plus" nzTheme="outline"></i>Create Project</button>
+  </div>
+</nz-header>
+<!-- </nz-affix> -->
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Before Posting" (nzOnCancel)="handleCancel()" [nzFooter]='null'>
+<form [formGroup]="agreeForm"> 
+  <p class="c-terms-height">This is the Terms and Aggreement part, there are lots of legal terms here you have to have a law degree to get what it's saying, I wonder will anyone read it all, maybe no I guess, it's usually one thousand words above very lengthy.This is the Terms and Aggreement part, there are lots of legal terms here you have to have a law degree to get what it's saying, I wonder will anyone read it all, maybe no I guess, it's usually one thousand words above very lengthy. his is the Terms and Aggreement part, there are lots of legal terms here you have to have a law degree to get what it's saying, I wonder will anyone read it all, maybe no I guess, it's usually one thousand words above very lengthy.This is the Terms and Aggreement part, there are lots of legal terms here you have to have a law degree to get what it's saying, I wonder will anyone read it all, maybe no I guess, it's usually one thousand words above very lengthy.</p>
+  <label nz-checkbox formControlName="cb" class="my-1"><b>I have read and agree to the above conditions.</b></label>
+  <button nzSize="large" nz-button nzType="primary" type="submit" [disabled]="!agreeForm.valid" (click)="confirmCreateProject()" nzBlock>Confirm</button>
+</form>
+
+
+</nz-modal>

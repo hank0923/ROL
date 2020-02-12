@@ -1,0 +1,123 @@
+<ngx-spinner
+bdOpacity = 0.4
+bdColor = "rgba(255,255,255,0.35)"
+size = "default"
+color = "#565656"
+type = "ball-clip-rotate"
+[fullScreen] = "true"
+>
+</ngx-spinner>
+
+<nz-content class="c-page-height">
+  
+  <div nz-row class="bg-white py-2 px-2 mt-1" *ngIf="isCreator">
+    <div nz-col="24">
+      <nz-steps [nzCurrent]="data.projectStatus + 1" >
+        <nz-step nzTitle="Created" nzDescription="You've successfully created a project."></nz-step>
+        <nz-step nzTitle="In Review"  nzDescription="The team is reviewing your project now."></nz-step>
+        <nz-step nzTitle="Launched"   nzIcon="smile" nzDescription="Congrats! Now people can join your project."></nz-step>
+      </nz-steps>
+    </div>
+  </div>
+
+  <div nz-row class="my-1">
+    <div nz-col nzMd="16" nzLg="18" class="inner-content px-2 py-1 bg-white">
+      <nz-page-header class="px-0 mb-1" nzBackIcon>
+        <!--breadcrumb-->
+        <nz-breadcrumb nz-page-header-breadcrumb>
+          <nz-breadcrumb-item><a routerLink="{{fromUrl}}">{{fromPage}}</a></nz-breadcrumb-item>
+          <nz-breadcrumb-item> {{data.projectName}}</nz-breadcrumb-item>
+        </nz-breadcrumb>
+        <!--title-->
+        <nz-page-header-title>{{data.projectName}}</nz-page-header-title>
+        <nz-page-header-content class="mt-1">
+          <nz-badge nzText="In Review" nzColor="blue" *ngIf="data.projectStatus == 0"></nz-badge>
+          <nz-badge nzText="Launched" nzStatus="success" *ngIf="data.projectStatus == 1"></nz-badge>
+          <nz-badge nzText="Inactive" nzStatus="default" *ngIf="data.projectStatus == 2"></nz-badge>
+          <div class="float-right">
+            <b>Start:</b> {{data.createdDate}}
+            <nz-divider nzType="vertical"></nz-divider>
+            <b>End:</b> {{data.endDate}}
+          </div>
+        </nz-page-header-content>
+      </nz-page-header>
+      <div style=" width: 100%; height: 264px; overflow: hidden;">
+        <img src=" {{data.picture}}" style="width: 100%; object-fit: cover;object-position:center">
+      </div>
+      <p class="mt-1">{{data.projectDescription}}</p>
+      <nz-divider nzText="Recruiting volenteers!"></nz-divider>
+      <div class="mt-1">
+        <nz-tag *ngIf="data.requiredSkill.dev">Developers</nz-tag>
+        <nz-tag *ngIf="data.requiredSkill.pm">Product Managers</nz-tag>
+        <nz-tag *ngIf="data.requiredSkill.design">UX/UI</nz-tag>
+      </div>
+      <p class="mt-1">{{data.requiredSkillText}}</p>
+    </div>
+    <div nz-col nzMd="8" nzLg="6">
+
+      <div class="pl-1 pb-1" *ngIf="isCreator">
+          <nz-card [nzTitle]="null" nzIcon="team">
+            
+              <nz-progress  class="my-2"[nzPercent]="Difference_In_Day_Percentage" [nzFormat]="percentageFormat" [nzStrokeColor]="{ '0%': '#108ee9', '100%': '#87d068' }" nzType="line" ></nz-progress>
+               <button nz-button nzType="default" nzBlock class="mt-1" (click)="toEditPage()">Edit Project</button>
+                <button class="mt-1" nz-button nzType="{{activeBtn}}" (click)="activeProject()" [nzLoading]="isLoading_active" nzBlock>{{activeText}}</button>
+                <div *ngIf="data.isActive" class="d-flex my-1 align-items-center"><i nz-icon nzType="info-circle" nzTheme="outline" class="mr-1"></i> People will not be able to view or join inactive project.</div>
+             
+          </nz-card>
+      </div>
+
+      <div class="pl-1 pb-1" *ngIf="canApprove">
+          <nz-card  [nzTitle]="null" nzIcon="team">
+              
+              <span *ngIf="data.projectStatus == 0">  
+                <button nz-button nzType="primary" nzBlock nzSize="large" (click)="approveProject()">Approve</button>
+                <button nz-button nzType="dashed" nzBlock class="mt-05" nzSize="large" (click)="rejectProject()">Reject</button>
+              </span>
+
+              <span *ngIf="data.projectStatus !== 0"> 
+                <nz-progress  *ngIf="data.isActive" class="my-2"[nzPercent]="Difference_In_Day_Percentage" [nzFormat]="percentageFormat" [nzStrokeColor]="{ '0%': '#108ee9', '100%': '#87d068' }" nzType="line" ></nz-progress>
+                <button class="mt-1" nzSize="large" nz-button nzType="{{activeBtn}}" (click)="activeProject()" [nzLoading]="isLoading_active" nzBlock>{{activeText}}</button>
+                <span *ngIf="data.isActive" class="d-flex my-1 align-items-center"><i nz-icon nzType="info-circle" nzTheme="outline" class="mr-1"></i> People will not be able to view or join inactive project.</span>
+              </span>
+
+          </nz-card>
+      </div>
+
+      <div class="pl-1 pb-1" *ngIf="data.projectStatus == 1">
+        <nz-card [nzTitle]="nzVolenteerTitle" nzIcon="team">
+          <ng-template #nzVolenteerTitle>
+            <i nz-icon class="mr-05" nzType="team" nzTheme="outline"></i>Volenteers
+          </ng-template>
+          <nz-list [nzItemLayout]="'horizontal'" class="c-list-height">
+            <nz-list-item *ngFor="let item of data.volunteers">
+              <nz-avatar class="mr-05" nzIcon="user" nzSrc="{{ item.vAvatar }}"></nz-avatar>
+              <span>
+                <b>{{item.vName }}</b>
+                <div>{{item.vTitle}}</div>
+              </span>
+            </nz-list-item>
+          </nz-list>
+          <span *ngIf="!isCreator" class="join-action">
+            <button class="mt-1" nz-button nzSize="large" nzType="{{joinedBtn}}" (click)="joinProject()" [nzLoading]="isLoading" nzBlock>{{joinedText}}</button>
+            <button *ngIf="joined" nz-button nzSize="large" nzType="link" (click)="leaveProject()" nzBlock><span class="text-mute">Leave Project</span></button>
+          </span>
+        </nz-card>
+      </div>
+      <div class="pl-1" *ngIf="!isCreator">
+        <nz-card [nzTitle]="nzCreatorTitle" nzIcon="team">
+          <ng-template #nzCreatorTitle>
+            Creator Profile
+          </ng-template>
+          <div class="d-flex justify-content-center align-items-center flex-direction-column">
+            <nz-avatar class="mt-1" nzSize="82px" nzIcon="user" nzSrc="{{ data.creatorAvatar }}"></nz-avatar>
+            <h3 class="mt-05 mb-0 pb-0">{{ data.creator }}</h3>
+            <div class="mb-1">{{ data.creatorTitle }}</div>
+            <div  class="mb-1"><i nz-icon nzType="mail" nzTheme="outline" class="mt-1"></i> {{ data.creatorContact }}</div>
+            
+
+          </div>
+        </nz-card>
+      </div>
+    </div>
+  </div>
+</nz-content>

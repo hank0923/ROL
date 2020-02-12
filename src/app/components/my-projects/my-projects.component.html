@@ -1,0 +1,109 @@
+<ngx-spinner
+bdOpacity = 0.4
+bdColor = "rgba(255,255,255,0.35)"
+size = "default"
+color = "#565656"
+type = "ball-clip-rotate"
+[fullScreen] = "true"
+>
+</ngx-spinner>
+
+<nz-content class="c-page-height">
+  <div nz-row class="mt-3">
+    <div nz-col nzSpan="24">
+      <h3>My Projects</h3>
+    </div>
+  </div>
+  <div class="inner-content">
+    <nz-table #nzTable nzSize="small" [nzData]="listOfData" [nzScroll]="{ x: '1000px'}" nzFrontPagination="false" nzBordered>
+      <thead>
+        <tr class="font-small">
+          <th nzWidth="200px" nzLeft="0px" nzCustomFilter>Project Name</th>
+          <th nzWidth="100px">Status</th>
+          <th nzWidth="100px" nzShowSort>Start</th>
+          <th nzWidth="100px" nzShowSort>End</th>
+          <th nzWidth="100px" nzShowFilter [nzFilters]="listOfFilterLocation">Location</th>
+          <!-- <th nzWidth="300px">Project Description</th> -->
+          <th nzWidth="140px">Volunteers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-template ngFor let-data [ngForOf]="nzTable.data">
+          <tr>
+            <td nzWidth="200px" nzLeft="0px" class="text-left text-bold">
+              <span class="to-detail" (click)="goToProjectDetail(data)">{{ data.projectName }}</span>
+            </td>
+            <td nzWidth="100px">
+              <!-- <nz-tag [nzColor]="'#1890ff'" *ngIf="data.projectStatus == 0">In review</nz-tag>
+              <nz-tag [nzColor]="'#87d068'" *ngIf="data.projectStatus == 1">Launched</nz-tag>
+              <nz-tag [nzColor]="'#a2a3a4'" *ngIf="data.projectStatus == 2">Inactive</nz-tag> -->
+              <nz-badge nzText="In Review" nzColor="blue" *ngIf="data.projectStatus == 0"></nz-badge>
+              <nz-badge nzText="Launched" nzStatus="success" *ngIf="data.projectStatus == 1"></nz-badge>
+              <nz-badge nzText="Inactive" nzStatus="default" *ngIf="data.projectStatus == 2"></nz-badge>
+            </td>
+            <td nzWidth="100px">{{ data.createdDate }}</td>
+            <td nzWidth="100px">{{ data.endDate }}</td>
+            <td nzWidth="100px">{{ data.location }}</td>
+            <!-- <td nzWidth="300px">{{ data.projectDescription }}</td> -->
+            <td nzWidth="140px">
+              <span *ngFor="let v of data.volunteers | slice:0:3; let i=index" >
+                <nz-avatar class="mr-05 mb-05" nzIcon="user" nzSrc="{{ v.vAvatar }}" nz-tooltip nzTooltipTitle="{{ v.vName }}"></nz-avatar>
+              </span>
+              <nz-avatar *ngIf="data.moreVolenteerNumber >= 2" class="mr-05 mb-05" nzText="+{{data.moreVolenteerNumber}}"></nz-avatar>
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </nz-table>
+  </div>
+  <div nz-row class="mt-3">
+    <div nz-col nzSpan="24">
+      <h3>Joined Projects</h3>
+    </div>
+  </div>
+
+  <div class="inner-content">
+    <nz-table #nzJoinedTable nzSize="small" [nzData]="listOfJoinedData" [nzScroll]="{ x: '1000px'}" nzFrontPagination="false" nzBordered>
+      <thead>
+        <tr class="font-small">
+          <th nzWidth="200px" nzLeft="0px" nzCustomFilter>Project Name</th>
+          <th nzWidth="100px">Creator</th>
+          <th nzWidth="100px" nzShowSort>Start</th>
+          <th nzWidth="100px" nzShowSort>End</th>
+          <th nzWidth="100px" nzShowFilter [nzFilters]="listOfFilterLocation">Location</th>
+          <!-- <th nzWidth="300px">Project Description</th> -->
+          <th nzWidth="140px">Volunteers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-template ngFor let-data [ngForOf]="nzJoinedTable.data">
+          <tr>
+            <td nzWidth="200px" nzLeft="0px" class="text-left text-bold">
+              <!-- <span class="to-detail" (click)="goToProjectDetail(data)">{{ data.projectName }}</span> -->
+              <span class="to-detail" (click)="goToProjectDetailFake(data)">{{ data.projectName }}</span>
+            </td>
+            <td nzWidth="100px">
+              <div class="d-flex flex-direction-column">
+                <!-- <nz-avatar nzText="{{data.creatorAvatar}}" style="color:#f56a00; background-color:#fde3cf;"></nz-avatar> -->
+                <!-- <nz-avatar class="mr-05" nzIcon="user" nzSrc="{{data.creatorAvatar}}"></nz-avatar> -->
+                <div>{{ data.creator }}</div>
+                <div class="font-small">{{ data.creatorTitle }}</div>
+              </div>
+            </td>
+            <td nzWidth="100px">{{ data.createdDate }}</td>
+            <td nzWidth="100px">{{ data.endDate }}</td>
+            <td nzWidth="100px">{{ data.location }}</td>
+            <!-- <td nzWidth="300px">{{ data.projectDescription }}</td> -->
+            <td nzWidth="140px">
+              <span *ngFor="let v of data.volunteers | slice:0:3; let i=index" >
+                <nz-avatar class="mr-05 mb-05" nzIcon="user" nzSrc="{{ v.vAvatar }}" nz-tooltip nzTooltipTitle="{{ v.vName }}"></nz-avatar>
+              </span>
+              <nz-avatar *ngIf="data.moreVolenteerNumber >= 2" class="mr-05 mb-05" nzText="+{{data.moreVolenteerNumber}}"></nz-avatar>
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </nz-table>
+  </div>
+
+</nz-content>
