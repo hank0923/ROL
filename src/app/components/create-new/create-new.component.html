@@ -1,6 +1,6 @@
 <nz-content class="c-page-height">
   <div class="mt-2" nz-row nzType="flex" nzJustify="center">
-    <div nz-col nzSpan="18" class="inner-content bg-white px-2">
+    <div nz-col nzMd="18" nzSm="24" class="inner-content bg-white px-2">
       <nz-page-header class="px-0 mb-1" nzBackIcon>
         <!--title-->
         <nz-page-header-title>Create Project</nz-page-header-title>
@@ -55,7 +55,8 @@
             Description
           </nz-form-label>
           <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Project description is required">
-            <textarea nz-input placeholder="Description about your project" [nzAutosize]="{ minRows: 6, maxRows: 12 }" formControlName="projectDescription" id="projectDescription"></textarea>
+            <!-- <textarea nz-input placeholder="Description about your project" [nzAutosize]="{ minRows: 6, maxRows: 12 }" formControlName="projectDescription" id="projectDescription"></textarea> -->
+              <quill-editor class="c-quill-editor" placeholder="Enter project description..." formControlName="projectDescription" required></quill-editor>
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
@@ -75,7 +76,8 @@
             </span>
           </nz-form-label>
           <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Skillset description is required">
-            <textarea nz-input placeholder="Enter skillset description" [nzAutosize]="{ minRows: 6, maxRows: 12 }" formControlName="skillsDescription" id="skillsDescription"></textarea>
+            <!-- <textarea nz-input placeholder="Enter skillset description" [nzAutosize]="{ minRows: 6, maxRows: 12 }" formControlName="skillsDescription" id="skillsDescription"></textarea> -->
+            <quill-editor class="c-quill-editor" placeholder="Enter project description..." formControlName="skillsDescription" required></quill-editor>
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>

@@ -34,6 +34,8 @@ type = "ball-clip-rotate"
           <nz-badge nzText="In Review" nzColor="blue" *ngIf="data.projectStatus == 0"></nz-badge>
           <nz-badge nzText="Launched" nzStatus="success" *ngIf="data.projectStatus == 1"></nz-badge>
           <nz-badge nzText="Inactive" nzStatus="default" *ngIf="data.projectStatus == 2"></nz-badge>
+          <nz-divider nzType="vertical" *ngIf="data.isCharity"></nz-divider>
+          <nz-tag [nzColor]="'blue'" *ngIf="data.isCharity">Charity Project</nz-tag>
           <div class="float-right">
             <b>Start:</b> {{data.createdDate}}
             <nz-divider nzType="vertical"></nz-divider>
@@ -41,8 +43,8 @@ type = "ball-clip-rotate"
           </div>
         </nz-page-header-content>
       </nz-page-header>
-      <div style=" width: 100%; height: 264px; overflow: hidden;">
-        <img src=" {{data.picture}}" style="width: 100%; object-fit: cover;object-position:center">
+      <div style="width: 100%; max-height: 348px; overflow: hidden;">
+        <img src=" {{data.picture}}" style="width: 100%; object-fit: cover;object-position:50% 50%;">
       </div>
       <p class="mt-1">{{data.projectDescription}}</p>
       <nz-divider nzText="Recruiting volenteers!"></nz-divider>
@@ -53,7 +55,7 @@ type = "ball-clip-rotate"
       </div>
       <p class="mt-1">{{data.requiredSkillText}}</p>
     </div>
-    <div nz-col nzMd="8" nzLg="6">
+    <div nz-col class="sidebar" nzMd="8" nzLg="6">
 
       <div class="pl-1 pb-1" *ngIf="isCreator">
           <nz-card [nzTitle]="null" nzIcon="team">
@@ -80,6 +82,13 @@ type = "ball-clip-rotate"
                 <span *ngIf="data.isActive" class="d-flex my-1 align-items-center"><i nz-icon nzType="info-circle" nzTheme="outline" class="mr-1"></i> People will not be able to view or join inactive project.</span>
               </span>
 
+          </nz-card>
+      </div>
+
+      <div class="pl-1 pb-1" *ngIf="canApprove && data.isCharity">
+          <nz-card  [nzTitle]="null" nzIcon="team">
+              <h3>This is a charity project</h3>
+              <button class="c-download-btn d-flex flex-direction-column align-items-center justify-content-center" nzSize="large" nz-button nzBlock><i nz-icon nzType="audit" nzTheme="outline" style="font-size: 1.74em;"></i>Download supporting document</button>
           </nz-card>
       </div>
 

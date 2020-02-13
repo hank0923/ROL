@@ -279,7 +279,7 @@
   font-size: 1.4rem;
   /*background: rgba(255, 255, 255, 0.2);*/
   margin: 0 24px 0 0;
-  cursor:pointer;
+  cursor: pointer;
   float: left;
   font-weight: 700;
   /*color: #FFF;*/
@@ -427,9 +427,16 @@ nz-page-header {
   text-align: right;
 }
 
-/**/
-/**/
 
+
+/**/
+/**/
+.c-download-btn {
+  white-space: normal;
+  height: auto;
+  padding: 20px 15px;
+  line-height: 1;
+}
 
 nz-avatar {
   margin-left: 4px;
@@ -582,26 +589,61 @@ main.login {
   width: 100%;
 }
 
-@media screen and (max-width: 45em) {
 
-  .content {
-    height: auto;
-    min-height: 0;
+/*Quill style override*/
+.c-quill-editor .ql-toolbar.ql-snow {
+  line-height: 1;
+}
+
+.c-quill-editor .ql-editor {
+  min-height: 180px;
+  height: auto;
+}
+
+
+
+
+/*Other pages Responsive*/
+/*<768px:xs; 768px: sm; 992:md; 1200:lg*/
+@media screen and (max-width: 992px) {
+
+  .ant-layout-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
   }
 
-  .content--side {
-    width: 100vw;
+  .ant-layout-header>div {
+    margin: 0;
+    padding: 0;
+    line-height: 48px;
   }
 
-  .content--fixed {
-    position: relative;
-    z-index: 1000;
-    display: block;
-    padding: 0.85em;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .view-switch-btn {
+    float: left;
   }
 
-  .content--side+.content--side {
-    width: 100vw;
-    height: 100vw;
+  .content--side.picture {
+    display: none;
   }
+
+  .content--side.width {
+    flex-grow: 1 !important;
+  }
+
+
+  .sidebar > div{
+    padding-left: 0;
+  }
+
+  .sidebar > div:first-of-type{
+    margin-top:1em;
+  }
+
 }

@@ -19,6 +19,8 @@ import { ProjectDetailComponent } from './components/project-detail/project-deta
 import { FooterComponent } from './components/footer/footer.component';
 import { CreateNewComponent } from './components/create-new/create-new.component';
 
+import { QuillModule } from 'ngx-quill'
+
 import { NgxSpinnerModule } from "ngx-spinner";
 import { LoginComponent } from './components/login/login.component';
 
@@ -45,7 +47,13 @@ registerLocaleData(en);
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    QuillModule.forRoot({
+      modules: {
+        toolbar: [['bold', 'italic', 'underline'], ['link', 'image'],[{ 'list': 'ordered'}, { 'list': 'bullet' }]]
+      },
+      theme: 'snow'
+    })
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

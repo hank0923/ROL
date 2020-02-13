@@ -11,7 +11,7 @@ type = "ball-clip-rotate"
 
 <nz-content class="c-page-height">
   <div nz-row class="my-1">
-    <div nz-col nzSpan="24">
+    <div nz-col  nzXs="24" nzSm="18">
       <!-- <h2 class="float-left" *ngIf="radioValue == 0">All Projects</h2> -->
       <div class="float-left c-select-width"  *ngIf="radioValue == 1">
       	  <nz-select
@@ -20,17 +20,19 @@ type = "ball-clip-rotate"
 	       [nzMaxTagCount]="1"
 	      [nzTokenSeparators]="[',']"
 	      nzPlaceHolder="Filter by location"
-	    >
+	    class="mr-1" >
 	      <nz-option *ngFor="let option of listOfFilterLocation" [nzLabel]="option.text" [nzValue]="option.value"></nz-option>
 	    </nz-select>
-	    <nz-select class="ml-1" [(ngModel)]="sortedValue" nzAllowClear nzPlaceHolder="Sort by">
+	    <nz-select [(ngModel)]="sortedValue" nzAllowClear nzPlaceHolder="Sort by">
 	        <nz-option nzValue="recent" nzLabel="Most recent"></nz-option>
 	        <nz-option nzValue="popular" nzLabel="Most Popular"></nz-option>
       	</nz-select>
       </div>	
-      <nz-radio-group class="float-right" [(ngModel)]="radioValue" [nzSize]="'middle'">
-        <label nz-radio-button nzValue="0" nz-tooltip nzTooltipTitle="Table view"><i nz-icon nzType="table" nzTheme="outline"></i></label>
-        <label nz-radio-button nzValue="1" nz-tooltip nzTooltipTitle="Card view"><i nz-icon nzType="border" nzTheme="outline"></i></label>
+    </div>
+    <div nz-col  nzXs="24" nzSm="6">
+      <nz-radio-group class="float-right view-switch-btn" [(ngModel)]="radioValue" [nzSize]="'middle'">
+        <label nz-radio-button [nzValue]="0" nz-tooltip nzTooltipTitle="Table view"><i nz-icon nzType="table" nzTheme="outline"></i></label>
+        <label nz-radio-button [nzValue]="1" nz-tooltip nzTooltipTitle="Card view"><i nz-icon nzType="border" nzTheme="outline"></i></label>
       </nz-radio-group>
     </div>
   </div>
