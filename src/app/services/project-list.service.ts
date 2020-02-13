@@ -39,14 +39,14 @@ export class ProjectListService {
 	      isActive:true,
 	      creator: 'Min Chen',
 	      creatorTitle:'VP & CTO - APAC',
-		  creatorAvatar:'../assets/min.png',
+		  creatorAvatar:'./assets/min.png',
 	      requiredSkill: {
 	      	dev: true,
 	      	design: true,
 	      	pm: true
 	      },
 	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
-	      picture: '../assets/1.jpeg',
+	      picture: './assets/1.jpeg',
 	      createdDate:'Feb,1,2020',
 	      creatorContact:'info@lexisnexis.com',
 	      endDate:'Feb,1,2021',
@@ -54,11 +54,11 @@ export class ProjectListService {
 	      projectDescription: 'Expanding the Rule of Law is our company mission and there are a number of fantastic projects around the world to help people in need.  There are also a lot of employees across RELX that would like to help, but aren’t sure how.  A new Rule of Law Project Board would help connect volunteers with projects to better achieve our company mission and help people!',
 	      volunteers: [{
 	      	vName:'Min Chen', 
-	      	vAvatar: '../assets/min.png',
+	      	vAvatar: './assets/min.png',
 	      	vTitle: 'VP & CTO - APAC'
 	      },{
 	      	vName:'Jamie Buckley', 
-	      	vAvatar: '../assets/jamie.png',
+	      	vAvatar: './assets/jamie.png',
 	      	vTitle: 'Chief Product Officer'
 	      }]
 		  	},{
@@ -67,7 +67,7 @@ export class ProjectListService {
 		      isCharity: true,
 		      isActive:true,
 		      projectName: 'Lexis Advance offering to Small Law & Bar',
-		      picture: '../assets/project-picture/1.png',
+		      picture: './assets/project-picture/1.png',
 		      isNew: false,
 		       requiredSkill: {
 		      	dev: true,
@@ -85,23 +85,23 @@ export class ProjectListService {
 		      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 		      volunteers: [{
 		      	vName:'Hank Liu', 
-		      	vAvatar: '../assets/hank.png',
+		      	vAvatar: './assets/hank.png',
 		      	vTitle: 'Mgr UX'
 		      },{
 		      	vName:'Yale Yu', 
-		      	vAvatar: '../assets/yale.png',
+		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
 		      },{
 		      	vName:'Chenhui Xiao', 
-		      	vAvatar: '../assets/chenhui.png',
+		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
 		      },{
 		      	vName:'Min Chen', 
-		      	vAvatar: '../assets/min.png',
+		      	vAvatar: './assets/min.png',
 		      	vTitle: 'VP & CTO - APAC'
 		      },{
 		      	vName:'Jamie Buckley', 
-		      	vAvatar: '../assets/jamie.png',
+		      	vAvatar: './assets/jamie.png',
 		      	vTitle: 'Chief Product Officer'
 		      }]
 		    },{
@@ -110,10 +110,10 @@ export class ProjectListService {
 		      isCharity: true,
 		      isActive:true,
 		      projectName: 'AI & NLP technology exploration',
-		       picture: '../assets/3.jpg',
+		       picture: './assets/3.jpg',
 		      isNew: false,
 		      creator: 'Jamie Buckley',
-		      creatorAvatar:'../assets/jamie.png',
+		      creatorAvatar:'./assets/jamie.png',
 		      creatorTitle:'Chief Product Officer',
 		       requiredSkill: {
 		      	dev: true,
@@ -128,20 +128,20 @@ export class ProjectListService {
 		      projectDescription: 'As AI and NLP technology matures, let us seek out opportunities and explore possibilities on how it can be implemented to improve our existing product.',
 		      volunteers: [{
 		      	vName:'Yale Yu', 
-		      	vAvatar: '../assets/yale.png',
+		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
 		      }]
 		    },{
 		      id: 3,	
 		      projectStatus: 1,	
 		      projectName: 'RELX Rule of Law Project Board',
-		       picture: '../assets/project-picture/2.png',
+		       picture: './assets/project-picture/2.png',
 		      isNew: true,
 		      isActive:true,
 		      isCharity: true,
 		      creator: 'Min Chen',
 	      	  creatorTitle:'VP & CTO - APAC',
-		      creatorAvatar:'../assets/min.png',
+		      creatorAvatar:'./assets/min.png',
 		      createdDate:'Feb,1,2020',
 		      creatorContact:'info@lexisnexis.com',
 		       requiredSkill: {
@@ -155,11 +155,11 @@ export class ProjectListService {
 		      projectDescription: 'Expanding the Rule of Law is our company mission and there are a number of fantastic projects around the world to help people in need.  There are also a lot of employees across RELX that would like to help, but aren’t sure how.  A new Rule of Law Project Board would help connect volunteers with projects to better achieve our company mission and help people!',
 		       volunteers: [{
 		      	vName:'Min Chen', 
-		      	vAvatar: '../assets/min.png',
+		      	vAvatar: './assets/min.png',
 		      	vTitle: 'VP & CTO - APAC'
 		      },{
 		      	vName:'Jamie Buckley', 
-		      	vAvatar: '../assets/jamie.png',
+		      	vAvatar: './assets/jamie.png',
 		      	vTitle: 'Chief Product Officer'
 		      }]
 		  	},{
@@ -168,11 +168,11 @@ export class ProjectListService {
 		      isCharity: false,
 		      isActive:true,
 		      projectName: 'Lexis Advance offering to Small Law & Bar',
-		       picture: '../assets/project-picture/3.jpg',
+		       picture: './assets/project-picture/3.jpg',
 		      isNew: false,
 		     creator: 'Yale Yu',
 	      	  creatorTitle:'Director Software Engineering',
-		      creatorAvatar:'../assets/yale.png',
+		      creatorAvatar:'./assets/yale.png',
 		      createdDate:'Jan,15,2020',
 		      creatorContact:'info@lexisnexis.com',
 		      endDate:'July,15,2020',
@@ -186,15 +186,15 @@ export class ProjectListService {
 		      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 		     volunteers: [{
 		      	vName:'Hank Liu', 
-		      	vAvatar: '../assets/hank.png',
+		      	vAvatar: './assets/hank.png',
 		      	vTitle: 'Mgr UX'
 		      },{
 		      	vName:'Yale Yu', 
-		      	vAvatar: '../assets/yale.png',
+		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
 		      },{
 		      	vName:'Chenhui Xiao', 
-		      	vAvatar: '../assets/chenhui.png',
+		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
 		      }]
 		    },{
@@ -202,7 +202,7 @@ export class ProjectListService {
 		      projectStatus: 1,
 		      isActive:true,	
 		      projectName: 'Lexis Advance offering to Small Law & Bar',
-		       picture: '../assets/6.jpg',
+		       picture: './assets/6.jpg',
 		      isNew: false,
 		      isCharity: false,
 		      creator: 'Chenhui Xiao',
@@ -214,22 +214,22 @@ export class ProjectListService {
 		      },
 		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',  
 		      creatorContact:'info@lexisnexis.com',
-		      creatorAvatar:'../assets/chenhui.png',
+		      creatorAvatar:'./assets/chenhui.png',
 		      createdDate:'Jan,15,2020',
 		      endDate:'July,18,2020',
 		      location:'Sydney',
 		      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 		      volunteers: [{
 		      	vName:'Hank Liu', 
-		      	vAvatar: '../assets/hank.png',
+		      	vAvatar: './assets/hank.png',
 		      	vTitle: 'Mgr UX'
 		      },{
 		      	vName:'Yale Yu', 
-		      	vAvatar: '../assets/yale.png',
+		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
 		      },{
 		      	vName:'Chenhui Xiao', 
-		      	vAvatar: '../assets/chenhui.png',
+		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
 		      }]
 		    },{
@@ -237,12 +237,12 @@ export class ProjectListService {
 		      projectStatus: 1,
 		      isActive:true,	
 		      projectName: 'UX Meets Technology Sharing',
-		      picture: '../assets/7.jpg',
+		      picture: './assets/7.jpg',
 		      isNew: true,
 		      isCharity: false,
 		      creator: 'Hank Liu',
 		      creatorContact:'info@lexisnexis.com',
-		      creatorAvatar:'../assets/hank.png',
+		      creatorAvatar:'./assets/hank.png',
 		       requiredSkill: {
 		      	dev: true,
 		      	design: false,
@@ -256,11 +256,11 @@ export class ProjectListService {
 		      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 		     volunteers: [{
 		      	vName:'Yale Yu', 
-		      	vAvatar: '../assets/yale.png',
+		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
 		      },{
 		      	vName:'Chenhui Xiao', 
-		      	vAvatar: '../assets/chenhui.png',
+		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
 		      }]
 		    },{
@@ -268,7 +268,7 @@ export class ProjectListService {
 		      projectStatus: 1,
 		      isActive:true,	
 		      projectName: 'Privacy and Security Technology Sharing ',
-		       picture: '../assets/8.jpg',
+		       picture: './assets/8.jpg',
 		      isNew: false,
 		      isCharity: false,
 		      creator: 'Jessica Wang',
@@ -280,22 +280,22 @@ export class ProjectListService {
 		      },
 		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
 		      creatorTitle:'Program Manager',
-		      creatorAvatar:'../assets/jessica.png',
+		      creatorAvatar:'./assets/jessica.png',
 		      createdDate:'Jan,15,2020',
 		      endDate:'July,15,2020',
 		      location:'Sydney',
 		      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 		      volunteers: [{
 		      	vName:'Hank Liu', 
-		      	vAvatar: '../assets/hank.png',
+		      	vAvatar: './assets/hank.png',
 		      	vTitle: 'Mgr UX'
 		      },{
 		      	vName:'Yale Yu', 
-		      	vAvatar: '../assets/yale.png',
+		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
 		      },{
 		      	vName:'Chenhui Xiao', 
-		      	vAvatar: '../assets/chenhui.png',
+		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
 		      }]
 		    },{
@@ -303,11 +303,11 @@ export class ProjectListService {
 		      projectStatus: 1,
 		      isActive:true,	
 		      projectName: 'Lexis Advance offering to Small Law & Bar',
-		      picture: '../assets/5.jpg',
+		      picture: './assets/5.jpg',
 		      isNew: false,
 		      isCharity: false,
 		      creator: 'Chenhui Xiao',
-		      creatorAvatar:'../assets/chenhui.png',
+		      creatorAvatar:'./assets/chenhui.png',
 		      creatorTitle:'UX Designer II',
 		      createdDate:'Jan,15,2020',
 		      creatorContact:'info@lexisnexis.com',
@@ -322,7 +322,7 @@ export class ProjectListService {
 		      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 		     volunteers: [{
 		      	vName:'Yale Yu', 
-		      	vAvatar: '../assets/yale.png',
+		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
 		      }]
 		}]
@@ -359,14 +359,14 @@ export class ProjectListService {
 		      isCharity: true,
 		      creator: 'Min Chen',
 		      creatorTitle:'VP & CTO - APAC',
-		      creatorAvatar:'../assets/min.png',
+		      creatorAvatar:'./assets/min.png',
 		      requiredSkill: {
 		      	dev: true,
 		      	design: true,
 		      	pm: true
 		      },
 		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
-		      picture: '../assets/1.jpeg',
+		      picture: './assets/1.jpeg',
 		      createdDate:'Feb,1,2020',
 		      creatorContact:'info@lexisnexis.com',
 		      endDate:'Feb,1,2021',
@@ -374,23 +374,23 @@ export class ProjectListService {
 		      projectDescription: 'Expanding the Rule of Law is our company mission and there are a number of fantastic projects around the world to help people in need.  There are also a lot of employees across RELX that would like to help, but aren’t sure how.  A new Rule of Law Project Board would help connect volunteers with projects to better achieve our company mission and help people!',
 		      volunteers: [{
 		      	vName:'Min Chen', 
-		      	vAvatar: '../assets/min.png',
+		      	vAvatar: './assets/min.png',
 		      	vTitle: 'VP & CTO - APAC'
 		      },{
 		      	vName:'Jamie Buckley', 
-		      	vAvatar: '../assets/jamie.png',
+		      	vAvatar: './assets/jamie.png',
 		      	vTitle: 'Chief Product Officer'
 		      },{
 		      	vName:'Hank Liu', 
-		      	vAvatar: '../assets/hank.png',
+		      	vAvatar: './assets/hank.png',
 		      	vTitle: 'Mgr UX'
 		      },{
 		      	vName:'Yale Yu', 
-		      	vAvatar: '../assets/yale.png',
+		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
 		      },{
 		      	vName:'Chenhui Xiao', 
-		      	vAvatar: '../assets/chenhui.png',
+		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
 		      }]
 		  	},{
@@ -398,7 +398,7 @@ export class ProjectListService {
 		      projectStatus: 1,	
 		      isCharity: true,
 		      projectName: 'Lexis Advance offering to Small Law & Bar',
-		      picture: '../assets/2.jpg',
+		      picture: './assets/2.jpg',
 		      isActive: true,
 		      isNew: false,
 		       requiredSkill: {
@@ -409,7 +409,7 @@ export class ProjectListService {
 		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
 		      creator: 'Jessica Wang',
 		      creatorTitle:'Program Manager',
-		      creatorAvatar:'../assets/jessica.png',
+		      creatorAvatar:'./assets/jessica.png',
 		      createdDate:'Jan,15,2020',
 		      creatorContact:'info@lexisnexis.com',
 		      endDate:'July,15,2020',
@@ -417,15 +417,15 @@ export class ProjectListService {
 		      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 		      volunteers: [{
 		      	vName:'Hank Liu', 
-		      	vAvatar: '../assets/hank.png',
+		      	vAvatar: './assets/hank.png',
 		      	vTitle: 'Mgr UX'
 		      },{
 		      	vName:'Yale Yu', 
-		      	vAvatar: '../assets/yale.png',
+		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
 		      },{
 		      	vName:'Chenhui Xiao', 
-		      	vAvatar: '../assets/chenhui.png',
+		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
 		      }]
 		    },{
@@ -433,13 +433,13 @@ export class ProjectListService {
 		      projectStatus: 2,	
 		      isActive: true,
 		      projectName: 'UX Meets Technology Sharing',
-		      picture: '../assets/7.jpg',
+		      picture: './assets/7.jpg',
 		      isNew: true,
 		      isCharity: false,
 		      creator: 'Jessica Wang',
 		      creatorContact:'info@lexisnexis.com',
 		       creatorTitle:'Program Manager',
-		      creatorAvatar:'../assets/jessica.png',
+		      creatorAvatar:'./assets/jessica.png',
 		       requiredSkill: {
 		      	dev: true,
 		      	design: false,
@@ -453,7 +453,7 @@ export class ProjectListService {
 		      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 		     volunteers: [{
 		      	vName:'Chenhui Xiao', 
-		      	vAvatar: '../assets/chenhui.png',
+		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
 		      }]
 		    }]
@@ -488,14 +488,14 @@ export class ProjectListService {
 	      isCharity: true,
 	      creator: 'Min Chen',
 	      creatorTitle:'VP & CTO - APAC',
-	      creatorAvatar:'../assets/min.png',
+	      creatorAvatar:'./assets/min.png',
 	      requiredSkill: {
 	      	dev: true,
 	      	design: true,
 	      	pm: true
 	      },
 	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
-	      picture: '../assets/1.jpeg',
+	      picture: './assets/1.jpeg',
 	      createdDate:'Feb,1,2020',
 	      creatorContact:'info@lexisnexis.com',
 	      endDate:'Feb,1,2021',
@@ -503,23 +503,23 @@ export class ProjectListService {
 	      projectDescription: 'Expanding the Rule of Law is our company mission and there are a number of fantastic projects around the world to help people in need.  There are also a lot of employees across RELX that would like to help, but aren’t sure how.  A new Rule of Law Project Board would help connect volunteers with projects to better achieve our company mission and help people!',
 	      volunteers: [{
 	      	vName:'Min Chen', 
-	      	vAvatar: '../assets/min.png',
+	      	vAvatar: './assets/min.png',
 	      	vTitle: 'VP & CTO - APAC'
 	      },{
 	      	vName:'Jamie Buckley', 
-	      	vAvatar: '../assets/jamie.png',
+	      	vAvatar: './assets/jamie.png',
 	      	vTitle: 'Chief Product Officer'
 	      },{
 		      	vName:'Hank Liu', 
-		      	vAvatar: '../assets/hank.png',
+		      	vAvatar: './assets/hank.png',
 		      	vTitle: 'Mgr UX'
 		      },{
 		      	vName:'Yale Yu', 
-		      	vAvatar: '../assets/yale.png',
+		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
 		      },{
 		      	vName:'Chenhui Xiao', 
-		      	vAvatar: '../assets/chenhui.png',
+		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
 		      }]
 	  	},]
@@ -555,14 +555,14 @@ export class ProjectListService {
 	      isActive: true,
 	      creator: 'Min Chen',
 	      creatorTitle:'VP & CTO - APAC',
-	      creatorAvatar:'../assets/min.png',
+	      creatorAvatar:'./assets/min.png',
 	      requiredSkill: {
 	      	dev: true,
 	      	design: true,
 	      	pm: true
 	      },
 	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
-	      picture: '../assets/1.jpeg',
+	      picture: './assets/1.jpeg',
 	      createdDate:'Feb,1,2020',
 	      creatorContact:'info@lexisnexis.com',
 	      endDate:'Feb,1,2021',
@@ -575,7 +575,7 @@ export class ProjectListService {
 	      isCharity: false,
 	      isActive: true,
 	      projectName: 'Lexis Advance offering to Small Law & Bar',
-	      picture: '../assets/2.jpg',
+	      picture: './assets/2.jpg',
 	      isNew: false,
 	       requiredSkill: {
 	      	dev: true,
@@ -585,7 +585,7 @@ export class ProjectListService {
 	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
 	      creator: 'Jessica Wang',
 	      creatorTitle:'Program Manager',
-	      creatorAvatar:'../assets/jessica.png',
+	      creatorAvatar:'./assets/jessica.png',
 	      createdDate:'Jan,15,2020',
 	      creatorContact:'info@lexisnexis.com',
 	      endDate:'July,15,2020',
@@ -596,14 +596,14 @@ export class ProjectListService {
 	      id:2,	
 	      projectStatus: 0,	
 	      projectName: 'UX Meets Technology Sharing',
-	      picture: '../assets/7.jpg',
+	      picture: './assets/7.jpg',
 	      isNew: true,
 	      isCharity: false,
 	      isActive: false,
 	      creator: 'Jessica Wang',
 	      creatorTitle:'Program Manager',
 	      creatorContact:'info@lexisnexis.com',
-	      creatorAvatar:'../assets/jessica.png',
+	      creatorAvatar:'./assets/jessica.png',
 	       requiredSkill: {
 	      	dev: true,
 	      	design: false,
@@ -652,14 +652,14 @@ export class ProjectListService {
 	      isActive: true,
 	      creator: 'Min Chen',
 	      creatorTitle:'VP & CTO - APAC',
-	      creatorAvatar:'../assets/min.png',
+	      creatorAvatar:'./assets/min.png',
 	      requiredSkill: {
 	      	dev: true,
 	      	design: true,
 	      	pm: true
 	      },
 	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
-	      picture: '../assets/1.jpeg',
+	      picture: './assets/1.jpeg',
 	      createdDate:'Feb,1,2020',
 	      creatorContact:'info@lexisnexis.com',
 	      endDate:'Feb,1,2021',
@@ -667,15 +667,15 @@ export class ProjectListService {
 	      projectDescription: 'Expanding the Rule of Law is our company mission and there are a number of fantastic projects around the world to help people in need.  There are also a lot of employees across RELX that would like to help, but aren’t sure how.  A new Rule of Law Project Board would help connect volunteers with projects to better achieve our company mission and help people!',
 	      volunteers: [{
 	      	vName:'Hank Liu', 
-	      	vAvatar: '../assets/hank.png',
+	      	vAvatar: './assets/hank.png',
 	      	vTitle: 'Mgr UX'
 	      },{
 	      	vName:'Yale Yu', 
-	      	vAvatar: '../assets/yale.png',
+	      	vAvatar: './assets/yale.png',
 	      	vTitle:'Director Software Engineering'
 	      },{
 	      	vName:'Chenhui Xiao', 
-	      	vAvatar: '../assets/chenhui.png',
+	      	vAvatar: './assets/chenhui.png',
 	      	vTitle: 'UX Designer II'
 	      }]
 	  	},{
@@ -684,7 +684,7 @@ export class ProjectListService {
 	      isCharity: true,
 	      isActive: true,
 	      projectName: 'Lexis Advance offering to Small Law & Bar',
-	      picture: '../assets/2.jpg',
+	      picture: './assets/2.jpg',
 	      isNew: false,
 	       requiredSkill: {
 	      	dev: true,
@@ -694,7 +694,7 @@ export class ProjectListService {
 	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
 	      creator: 'Jessica Wang',
 	      creatorTitle:'Program Manager',
-	      creatorAvatar:'../assets/jessica.png',
+	      creatorAvatar:'./assets/jessica.png',
 	      createdDate:'Jan,15,2020',
 	      creatorContact:'info@lexisnexis.com',
 	      endDate:'July,15,2020',
@@ -702,29 +702,29 @@ export class ProjectListService {
 	      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 	      volunteers: [{
 	      	vName:'Hank Liu', 
-	      	vAvatar: '../assets/hank.png',
+	      	vAvatar: './assets/hank.png',
 	      	vTitle: 'Mgr UX'
 	      },{
 	      	vName:'Yale Yu', 
-	      	vAvatar: '../assets/yale.png',
+	      	vAvatar: './assets/yale.png',
 	      	vTitle:'Director Software Engineering'
 	      },{
 	      	vName:'Chenhui Xiao', 
-	      	vAvatar: '../assets/chenhui.png',
+	      	vAvatar: './assets/chenhui.png',
 	      	vTitle: 'UX Designer II'
 	      }]
 	    },{
 	      id:2,	
 	      projectStatus: 2,	
 	      projectName: 'UX Meets Technology Sharing',
-	      picture: '../assets/7.jpg',
+	      picture: './assets/7.jpg',
 	      isNew: true,
 	      isCharity: false,
 	      creatorTitle:'Program Manager',
 	      isActive: false,
 	      creator: 'Jessica Wang',
 	      creatorContact:'info@lexisnexis.com',
-	      creatorAvatar:'../assets/jessica.png',
+	      creatorAvatar:'./assets/jessica.png',
 	       requiredSkill: {
 	      	dev: true,
 	      	design: false,
@@ -737,15 +737,15 @@ export class ProjectListService {
 	      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 	     volunteers: [{
 	      	vName:'Hank Liu', 
-	      	vAvatar: '../assets/hank.png',
+	      	vAvatar: './assets/hank.png',
 	      	vTitle: 'Mgr UX'
 	      },{
 	      	vName:'Yale Yu', 
-	      	vAvatar: '../assets/yale.png',
+	      	vAvatar: './assets/yale.png',
 	      	vTitle:'Director Software Engineering'
 	      },{
 	      	vName:'Chenhui Xiao', 
-	      	vAvatar: '../assets/chenhui.png',
+	      	vAvatar: './assets/chenhui.png',
 	      	vTitle: 'UX Designer II'
 	      }]
 	    }]
