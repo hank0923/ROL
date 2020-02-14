@@ -431,7 +431,7 @@ export class ProjectListService {
 		    },{
 		      id:2,	
 		      projectStatus: 2,	
-		      isActive: true,
+		      isActive: false,
 		      projectName: 'UX Meets Technology Sharing',
 		      picture: './assets/7.jpg',
 		      isNew: true,

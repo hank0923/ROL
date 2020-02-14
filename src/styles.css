@@ -589,7 +589,9 @@ main.login {
   width: 100%;
 }
 
-
+.opacity60{
+  opacity: 0.6;
+}
 /*Quill style override*/
 .c-quill-editor .ql-toolbar.ql-snow {
   line-height: 1;
@@ -599,8 +601,7 @@ main.login {
   min-height: 180px;
   height: auto;
 }
-
-
+ 
 
 
 /*Other pages Responsive*/
@@ -638,12 +639,12 @@ main.login {
   }
 
 
-  .sidebar > div{
+  .sidebar>div {
     padding-left: 0;
   }
 
-  .sidebar > div:first-of-type{
-    margin-top:1em;
+  .sidebar>div:first-of-type {
+    margin-top: 1em;
   }
 
 }

@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   	//load pixateImg js file
-  	this.loadScript('../assets/js/pixateImg.js');
+  	this.loadScript('./assets/js/pixateImg.js');
 
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],

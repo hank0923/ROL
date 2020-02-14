@@ -33,7 +33,7 @@ export class ProjectDetailComponent implements OnInit {
 
   setup(): void {
     this.checkIsCreator();
-    this.checkIsActivate();
+    this.checkIsActive();
     this.calculatePercentage();
     this.checkCanApprove();
   }
@@ -61,9 +61,21 @@ export class ProjectDetailComponent implements OnInit {
       this.message.info("You've left the project.");
   }
 
-  isLoading_active:boolean = false;
-  activeText:string = "Inactivate";
-  activeBtn:string = "dashed";
+  isLoading_active:boolean;
+  activeText:string;
+  activeBtn:string;
+
+  checkIsActive(){
+    if(!this.data.isActive){
+        this.data.isActive = false;
+        this.activeBtn = "primary";
+        this.activeText = "Activate Project";
+    }else{
+      this.data.isActive = true;
+      this.activeBtn = "dashed";
+      this.activeText = "Inactivate Project";
+    }
+  }
 
   activeProject(): void {
     this.isLoading_active = true;
@@ -76,25 +88,16 @@ export class ProjectDetailComponent implements OnInit {
          this.message.info("The project is now inactivated.");
       }, 2000);
     }else{
-      this.isLoading_active = false;
-      this.data.isActive = true;
-      this.activeBtn = "dashed";
-      this.activeText = "Inactivate Project";
-      this.message.create("success", "You've activated the project.");
+       setTimeout(() => {
+        this.isLoading_active = false;
+        this.data.isActive = true;
+        this.activeBtn = "dashed";
+        this.activeText = "Inactivate Project";
+        this.message.create("success", "You've activated the project.");
+    }, 800);
     } 
   }
 
-   checkIsActivate(): void {
-    //fake function to  check if  project is activate for btn toggle;
-    if(this.data.isActive){
-      this.activeBtn = "dashed";
-      this.activeText = "Inactivate";
-
-    }else{
-      this.activeBtn = "primary";
-        this.activeText = "Activate Project";
-    } 
-  }
 
   isCreator: boolean;
   checkIsCreator(): void {
