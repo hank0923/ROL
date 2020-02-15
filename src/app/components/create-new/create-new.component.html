@@ -81,6 +81,7 @@
               <nz-option nzLabel="Project Management" nzValue="PM"></nz-option>
               <nz-option nzLabel="Developer" nzValue="Developer"></nz-option>
               <nz-option nzLabel="Designer" nzValue="Designer"></nz-option>
+              <nz-option nzLabel="Content" nzValue="Content"></nz-option>
             </nz-select>
           </nz-form-control>
         </nz-form-item>
@@ -146,7 +147,7 @@
         </nz-form-item> -->
         <nz-divider></nz-divider>
         <nz-form-item>
-          <nz-form-control [nzOffset]="6" [nzSm]="14" [nzXs]="24" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <nz-form-control [nzOffset]="6" [nzSm]="14" [nzXs]="24" nzHasFeedback>
             <!-- <button nz-button nzType="primary" [disabled]="!validateForm.valid">Submit</button> -->
             <button nz-button nzSize="large" nzType="primary" (click)="goToMyProject('success')">Submit</button>
             <button nz-button nzSize="large" class="ml-1" (click)="goToAllProject()">Cancel</button>
