@@ -167,6 +167,8 @@ Read more about MIT at [TLDRLegal](https://tldrlegal.com/license/mit-license).
 ng-zorro-antd
 MIT
 
+ng-zorro-antd/alert
+
 ng-zorro-antd/avatar
 
 ng-zorro-antd/badge
@@ -178,6 +180,8 @@ ng-zorro-antd/button
 ng-zorro-antd/calendar
 
 ng-zorro-antd/card
+
+ng-zorro-antd/cascader
 
 ng-zorro-antd/checkbox
 
