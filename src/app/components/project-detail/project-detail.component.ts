@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ElementRef, ViewChild} from '@angular/core';
 import {Router, NavigationExtras} from '@angular/router';
 
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -10,7 +10,7 @@ import { NgxSpinnerService } from "ngx-spinner";
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.css']
 })
-export class ProjectDetailComponent implements OnInit {
+export class ProjectDetailComponent implements OnInit  {
 
   constructor(
     private router: Router,
@@ -38,6 +38,15 @@ export class ProjectDetailComponent implements OnInit {
     this.checkCanApprove();
   }
 
+
+  //scroll to bottom of volenteer list
+ @ViewChild('scrollMe',{ read: ElementRef, static: false }) public scroll: ElementRef<any>;
+  public scrollBottom() {
+      console.log(this.scroll.nativeElement.scrollTop);
+      this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
+   }
+
+
   isLoading:boolean = false;
   joinedText:string = "Join Project";
   joinedBtn:string = "primary";
@@ -50,7 +59,8 @@ export class ProjectDetailComponent implements OnInit {
       this.joined = true;
       this.joinedBtn = "dashed";
       this.joinedText = "You are a volunteer";
-       this.message.create('success', "You've joined the project!");
+      this.message.create('success', "You've joined the project!");
+      this.scrollBottom();
     }, 2000);
   }
 
@@ -159,6 +169,8 @@ export class ProjectDetailComponent implements OnInit {
      }, 1000);
   }
 
+
+
   rejectProject(){
     this.spinner.show();
    
@@ -178,6 +190,9 @@ export class ProjectDetailComponent implements OnInit {
          this.message.create("success","Project approved.");
       }, 1000);
   }
+
+
+
 
 
 }

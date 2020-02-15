@@ -22,19 +22,35 @@
 .ant-card-head {
   width: 100%;
 }
-
+.ant-table-tbody > tr > td{
+  height: 58px;
+}
 .ant-badge-status-dot {
   width: 8px;
   height: 8px;
   top: -2px;
 }
-
+.has-error .ant-form-explain, .has-error .ant-form-split{
+  min-width: 300px;
+}
 .ant-tabs-bar {
   /*background: #fff;*/
   margin-top: 2em;
   border-bottom: none;
 }
 
+.c-cover-select .ant-radio-button-wrapper{
+  height: 102px;
+  overflow: hidden;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-cover-select  img{
+  width: 96px;
+}
 .ant-drawer-body {
   padding: 0;
 }

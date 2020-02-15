@@ -7,11 +7,19 @@
       </nz-page-header>
       <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
         <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="creatorName">Your Name</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Enter your name">
+            <input nz-input formControlName="creatorName" id="creatorName" placeholder="Enter your name" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
           <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="projectName">Project Name</nz-form-label>
           <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Enter your project name">
             <input nz-input formControlName="projectName" id="projectName" placeholder="Enter project name" />
           </nz-form-control>
         </nz-form-item>
+        
          <nz-form-item>
           <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="creatorPhoto">
             <span>
@@ -19,15 +27,27 @@
             </span>
           </nz-form-label>
           <nz-form-control [nzSm]="14" [nzXs]="24">
-            <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/" nzListType="picture-card" [(nzFileList)]="coverFileList" [nzShowButton]="coverFileList.length <1" [nzShowUploadList]="coverShowUploadList" [nzPreview]="coverHandlePreview">
-              <i nz-icon nzType="plus" class="c-icon-size"></i>
-              <div class="ant-upload-text">Upload</div>
+            
+            <div><i>Choose a picture below:</i></div>
+            <nz-radio-group class="c-cover-select" [nzSize]="'large'"  formControlName="coverPicture">
+              <label nz-radio-button nzValue="A"><img src="./assets/project-picture/1.png"></label>
+              <label nz-radio-button nzValue="B"><img src="./assets/project-picture/2.png"></label>
+              <label nz-radio-button nzValue="C"><img src="./assets/project-picture/3.jpg"></label>
+            </nz-radio-group>
+       
+            <div><i>or upload your own</i></div>
+             <nz-upload
+              nzAction="https://jsonplaceholder.typicode.com/posts/"
+              [nzFileList]="fileList"
+              [nzFilter]="filters"
+              (nzChange)="handleChange($event)"
+            >
+              <button nz-button><i nz-icon nzType="upload"></i><span>Upload Picture</span></button>
             </nz-upload>
-            <nz-modal [nzVisible]="coverPreviewVisible" [nzFooter]="null" (nzOnCancel)="coverPreviewVisible = false">
-              <ng-template #modalContent>
-                <img [src]="coverPreviewImage" [ngStyle]="{ width: '100%' }" />
-              </ng-template>
-            </nz-modal>
+    
+
+            
+            
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
@@ -43,11 +63,7 @@
             </span>
           </nz-form-label>
           <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Select where this project will happen">
-            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select location" formControlName="location" id="location">
-              <nz-option nzLabel="Remote" nzValue="Remote"></nz-option>
-              <nz-option nzLabel="Shanghai" nzValue="Shanghai"></nz-option>
-              <nz-option nzLabel="Sydney" nzValue="Sydney"></nz-option>
-            </nz-select>
+            <nz-cascader style="min-width: 300px;" [nzExpandTrigger]="'hover'" [nzOptions]="listOfFilterLocation" (ngModelChange)="selectLocation($event)" nzPlaceHolder="Select location" formControlName="locationValue" id="location" ></nz-cascader>
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
@@ -55,7 +71,6 @@
             Description
           </nz-form-label>
           <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Project description is required">
-            <!-- <textarea nz-input placeholder="Description about your project" [nzAutosize]="{ minRows: 6, maxRows: 12 }" formControlName="projectDescription" id="projectDescription"></textarea> -->
               <quill-editor class="c-quill-editor" placeholder="Enter project description..." formControlName="projectDescription" required></quill-editor>
           </nz-form-control>
         </nz-form-item>
@@ -76,7 +91,6 @@
             </span>
           </nz-form-label>
           <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Skillset description is required">
-            <!-- <textarea nz-input placeholder="Enter skillset description" [nzAutosize]="{ minRows: 6, maxRows: 12 }" formControlName="skillsDescription" id="skillsDescription"></textarea> -->
             <quill-editor class="c-quill-editor" placeholder="Enter project description..." formControlName="skillsDescription" required></quill-editor>
           </nz-form-control>
         </nz-form-item>
@@ -91,7 +105,7 @@
             </nz-upload>
           </nz-form-control>
         </nz-form-item>
-        <nz-divider nzText="Your Details" nzOrientation="left"></nz-divider>
+        <!-- <nz-divider nzText="Your Details" nzOrientation="left"></nz-divider>
         <nz-form-item>
           <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="creatorName">Name</nz-form-label>
           <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Enter your name">
@@ -129,7 +143,7 @@
               </ng-template>
             </nz-modal>
           </nz-form-control>
-        </nz-form-item>
+        </nz-form-item> -->
         <nz-divider></nz-divider>
         <nz-form-item>
           <nz-form-control [nzOffset]="6" [nzSm]="14" [nzXs]="24" nzHasFeedback [nzErrorTip]="emailErrorTpl">

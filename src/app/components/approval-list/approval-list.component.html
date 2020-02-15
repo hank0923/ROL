@@ -1,13 +1,5 @@
-<ngx-spinner
-bdOpacity = 0.4
-bdColor = "rgba(255,255,255,0.35)"
-size = "default"
-color = "#565656"
-type = "ball-clip-rotate"
-[fullScreen] = "true"
->
+<ngx-spinner bdOpacity=0.4 bdColor="rgba(255,255,255,0.35)" size="default" color="#565656" type="ball-clip-rotate" [fullScreen]="true">
 </ngx-spinner>
-
 <nz-content class="c-page-height">
   <div nz-row class="mt-3">
     <div nz-col nzSpan="24">
@@ -35,12 +27,14 @@ type = "ball-clip-rotate"
               <span class="to-detail" (click)="goToProjectDetail(data)">{{ data.projectName }}</span>
             </td>
             <td nzWidth="100px">
-              <!-- <nz-tag [nzColor]="'#1890ff'" *ngIf="data.projectStatus == 0">In review</nz-tag>
-              <nz-tag [nzColor]="'#87d068'" *ngIf="data.projectStatus == 1">Launched</nz-tag>
-              <nz-tag [nzColor]="'#a2a3a4'" *ngIf="data.projectStatus == 2">Inactive</nz-tag> -->
-              <nz-badge nzText="In Review" nzColor="blue" *ngIf="data.projectStatus == 0"></nz-badge>
-              <nz-badge nzText="Launched" nzStatus="success" *ngIf="data.projectStatus == 1"></nz-badge>
-              <nz-badge nzText="Inactive" nzStatus="default" *ngIf="data.projectStatus == 2"></nz-badge>
+              <span *ngIf="data.isActive">
+                <nz-badge nzText="In Review" nzColor="blue" *ngIf="data.projectStatus == 0"></nz-badge>
+                <nz-badge nzText="Launched" nzStatus="success" *ngIf="data.projectStatus == 1"></nz-badge>
+                <nz-badge nzText="Rejected" nzStatus="warning" *ngIf="data.projectStatus == 2"></nz-badge>
+              </span>
+              <span *ngIf="!data.isActive">
+                <nz-badge nzText="Inactive" nzStatus="default"></nz-badge>
+              </span>
             </td>
             <td nzWidth="140px">
               <div class="d-flex  flex-direction-column">
@@ -55,17 +49,16 @@ type = "ball-clip-rotate"
             <td nzWidth="100px">{{ data.location }}</td>
             <!-- <td nzWidth="300px">{{ data.projectDescription }}</td> -->
             <td nzWidth="120px">
-               <a>Approve</a>
-	            <nz-divider nzType="vertical"></nz-divider>
-	            <a>Reject</a>
+              <a>Approve</a>
+              <nz-divider nzType="vertical"></nz-divider>
+              <a>Reject</a>
             </td>
           </tr>
         </ng-template>
       </tbody>
     </nz-table>
   </div>
-
-    <div nz-row class="mt-3">
+  <div nz-row class="mt-3">
     <div nz-col nzSpan="24">
       <h3>Launched Projects</h3>
     </div>
@@ -91,12 +84,14 @@ type = "ball-clip-rotate"
               <span class="to-detail" (click)="goToProjectDetail(data)">{{ data.projectName }}</span>
             </td>
             <td nzWidth="100px">
-              <!-- <nz-tag [nzColor]="'#1890ff'" *ngIf="data.projectStatus == 0">In review</nz-tag>
-              <nz-tag [nzColor]="'#87d068'" *ngIf="data.projectStatus == 1">Launched</nz-tag>
-              <nz-tag [nzColor]="'#a2a3a4'" *ngIf="data.projectStatus == 2">Inactive</nz-tag> -->
-              <nz-badge nzText="In Review" nzColor="blue" *ngIf="data.projectStatus == 0"></nz-badge>
-              <nz-badge nzText="Launched" nzStatus="success" *ngIf="data.projectStatus == 1"></nz-badge>
-              <nz-badge nzText="Inactive" nzStatus="default" *ngIf="data.projectStatus == 2"></nz-badge>
+              <span *ngIf="data.isActive">
+                <nz-badge nzText="In Review" nzColor="blue" *ngIf="data.projectStatus == 0"></nz-badge>
+                <nz-badge nzText="Launched" nzStatus="success" *ngIf="data.projectStatus == 1"></nz-badge>
+                <nz-badge nzText="Rejected" nzStatus="warning" *ngIf="data.projectStatus == 2"></nz-badge>
+              </span>
+              <span *ngIf="!data.isActive">
+                <nz-badge nzText="Inactive" nzStatus="default"></nz-badge>
+              </span>
             </td>
             <td nzWidth="140px">
               <div class="d-flex  flex-direction-column">
@@ -111,8 +106,8 @@ type = "ball-clip-rotate"
             <td nzWidth="100px">{{ data.location }}</td>
             <!-- <td nzWidth="300px">{{ data.projectDescription }}</td> -->
             <td nzWidth="120px">
-               <a *ngIf="!data.isActive">Activate</a>
-	           <a *ngIf="data.isActive">Inactivate</a>
+              <a *ngIf="!data.isActive">Activate</a>
+              <a *ngIf="data.isActive">Inactivate</a>
             </td>
           </tr>
         </ng-template>

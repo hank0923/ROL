@@ -13,17 +13,9 @@ type = "ball-clip-rotate"
   <div nz-row class="my-1">
     <div nz-col  nzXs="24" nzSm="18">
       <!-- <h2 class="float-left" *ngIf="radioValue == 0">All Projects</h2> -->
-      <div class="float-left c-select-width"  *ngIf="radioValue == 1">
-      	  <nz-select
-	      [(ngModel)]="listOfTagOptions"
-	      nzMode="tags"
-	       [nzMaxTagCount]="1"
-	      [nzTokenSeparators]="[',']"
-	      nzPlaceHolder="Filter by location"
-	    class="mr-1" >
-	      <nz-option *ngFor="let option of listOfFilterLocation" [nzLabel]="option.text" [nzValue]="option.value"></nz-option>
-	    </nz-select>
-	    <nz-select [(ngModel)]="sortedValue" nzAllowClear nzPlaceHolder="Sort by">
+      <div class="d-flex align-items-center c-select-width"  *ngIf="radioValue == 1">
+      	<nz-cascader class="mr-05" [nzExpandTrigger]="'hover'" [nzOptions]="listOfFilterLocation" [(ngModel)]="locationValue" (ngModelChange)="filterLocation($event)" ></nz-cascader>
+	      <nz-select [(ngModel)]="sortedValue" nzAllowClear nzPlaceHolder="Sort by">
 	        <nz-option nzValue="recent" nzLabel="Most recent"></nz-option>
 	        <nz-option nzValue="popular" nzLabel="Most Popular"></nz-option>
       	</nz-select>
@@ -88,9 +80,10 @@ type = "ball-clip-rotate"
                   <h4>Project Description</h4>
                   <p>{{ data.projectDescription }} ... <a class="ml-2" (click)="goToProjectDetail(data)">Learn More</a></p>
                   <div>
-                    <nz-tag>Developers</nz-tag>
-                    <nz-tag>Product Managers</nz-tag>
-                    <nz-tag>UX/UI</nz-tag>
+                    <nz-tag *ngIf="data.requiredSkill.dev">Developers</nz-tag>
+                    <nz-tag *ngIf="data.requiredSkill.pm">Product Managers</nz-tag>
+                    <nz-tag *ngIf="data.requiredSkill.design">UX/UI</nz-tag>
+                    <nz-tag *ngIf="data.requiredSkill.content">Content</nz-tag>
                   </div>
                 </div>
               </div>

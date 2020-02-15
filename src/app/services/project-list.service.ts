@@ -9,27 +9,29 @@ export class ProjectListService {
   	constructor() { }
 
 
-
+  	//All project page 
+  	//show all launched projects. do not show inactive, in review, rejected projects
   	getProjects() {
   		let listOfData: Array<{ 
 			id: number, 
-			projectStatus: number, //0:in review, 1: launched, 2: inactive,
+			projectStatus: number, //0:in review, 1: launched, 2: rejected
 			isNew: boolean,
 			isCharity: boolean,
-			isActive: boolean,
+			isActive: boolean, //To tell if project is active or inactive. do not include this in project status, because active/inactive is a sperate feature
 			projectName: string,
-			picture: string, 
+			picture: string, //project cover photo
 			creator: string, 
 			creatorAvatar: string, 
 			creatorTitle: string, 
 			creatorContact: string,
-			requiredSkillText: string,
+			requiredSkillText: string,  //this should also change to object since we're using rich text editotr
 			requiredSkill: object,
-			createdDate: string, 
-			endDate: string,
-			location: string,
-			projectDescription:string,
-			volunteers: object
+			createdDate: string,  //this should be date object, for now use string for DEMO 
+			endDate: string,  //this should be date object, for now use string for DEMO 
+			location: string,  //not sure how will the location array will look like, maybe change this to locationID and map location frontend?
+			projectDescription:string, //this should be change to object since we are using rich text editor
+			volunteers: object,
+			rejectComment: string
 		}> = [{
 	      id: 0,
 	      projectStatus: 1,	
@@ -43,9 +45,9 @@ export class ProjectListService {
 	      requiredSkill: {
 	      	dev: true,
 	      	design: true,
-	      	pm: true
+	      	pm: true, content: true,
 	      },
-	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 	      picture: './assets/1.jpeg',
 	      createdDate:'Feb,1,2020',
 	      creatorContact:'info@lexisnexis.com',
@@ -60,7 +62,8 @@ export class ProjectListService {
 	      	vName:'Jamie Buckley', 
 	      	vAvatar: './assets/jamie.png',
 	      	vTitle: 'Chief Product Officer'
-	      }]
+	      },],
+	      rejectComment: ''
 		  	},{
 		      id: 1,	
 		      projectStatus: 1,	
@@ -72,9 +75,9 @@ export class ProjectListService {
 		       requiredSkill: {
 		      	dev: true,
 		      	design: true,
-		      	pm: true
+		      	pm: true, content: true,
 		      },
-		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 		      creator: 'Jessica Sparkles Glitter Shining Bright',
 		      creatorTitle:'Product Mgr I - Int',
 		  	  creatorAvatar:'',
@@ -103,7 +106,8 @@ export class ProjectListService {
 		      	vName:'Jamie Buckley', 
 		      	vAvatar: './assets/jamie.png',
 		      	vTitle: 'Chief Product Officer'
-		      }]
+		      }],
+		      rejectComment: ''
 		    },{
 		      id: 2,	
 		      projectStatus: 1,	
@@ -120,7 +124,7 @@ export class ProjectListService {
 		      	design: true,
 		      	pm: false
 		      },
-		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 		      createdDate:'Feb,15,2020',
 		      creatorContact:'info@lexisnexis.com',
 		      endDate:'Aug,15,2020',
@@ -130,7 +134,8 @@ export class ProjectListService {
 		      	vName:'Yale Yu', 
 		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
-		      }]
+		      }],
+		      rejectComment: ''
 		    },{
 		      id: 3,	
 		      projectStatus: 1,	
@@ -147,9 +152,9 @@ export class ProjectListService {
 		       requiredSkill: {
 		      	dev: true,
 		      	design: true,
-		      	pm: true
+		      	pm: true, content: true,
 		      },
-		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 		      endDate:'Feb,1,2021',
 		      location:'Shanghai',
 		      projectDescription: 'Expanding the Rule of Law is our company mission and there are a number of fantastic projects around the world to help people in need.  There are also a lot of employees across RELX that would like to help, but aren’t sure how.  A new Rule of Law Project Board would help connect volunteers with projects to better achieve our company mission and help people!',
@@ -161,7 +166,8 @@ export class ProjectListService {
 		      	vName:'Jamie Buckley', 
 		      	vAvatar: './assets/jamie.png',
 		      	vTitle: 'Chief Product Officer'
-		      }]
+		      }],
+		      rejectComment: ''
 		  	},{
 		      id: 4,	
 		      projectStatus: 1,	
@@ -179,9 +185,9 @@ export class ProjectListService {
 		       requiredSkill: {
 		      	dev: false,
 		      	design: true,
-		      	pm: true
+		      	pm: true, content: true,
 		      },
-		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 		      location:'Sydney',
 		      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 		     volunteers: [{
@@ -196,7 +202,8 @@ export class ProjectListService {
 		      	vName:'Chenhui Xiao', 
 		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
-		      }]
+		      }],
+		      rejectComment: ''
 		    },{
 		      id: 5,	
 		      projectStatus: 1,
@@ -210,9 +217,9 @@ export class ProjectListService {
 		       requiredSkill: {
 		      	dev: false,
 		      	design: false,
-		      	pm: true
+		      	pm: true, content: true,
 		      },
-		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',  
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',  
 		      creatorContact:'info@lexisnexis.com',
 		      creatorAvatar:'./assets/chenhui.png',
 		      createdDate:'Jan,15,2020',
@@ -231,7 +238,8 @@ export class ProjectListService {
 		      	vName:'Chenhui Xiao', 
 		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
-		      }]
+		      }],
+		      rejectComment: ''
 		    },{
 		      id:6,	
 		      projectStatus: 1,
@@ -246,9 +254,9 @@ export class ProjectListService {
 		       requiredSkill: {
 		      	dev: true,
 		      	design: false,
-		      	pm: true
+		      	pm: true, content: true,
 		      },
-		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 		      creatorTitle: 'Mgr UX',
 		      createdDate:'Jan,15,2020',
 		      endDate:'July,15,2020',
@@ -262,7 +270,8 @@ export class ProjectListService {
 		      	vName:'Chenhui Xiao', 
 		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
-		      }]
+		      }],
+		      rejectComment: ''
 		    },{
 		      id: 7,	
 		      projectStatus: 1,
@@ -278,7 +287,7 @@ export class ProjectListService {
 		      	design: true,
 		      	pm: false
 		      },
-		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 		      creatorTitle:'Program Manager',
 		      creatorAvatar:'./assets/jessica.png',
 		      createdDate:'Jan,15,2020',
@@ -297,7 +306,8 @@ export class ProjectListService {
 		      	vName:'Chenhui Xiao', 
 		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
-		      }]
+		      }],
+		      rejectComment: ''
 		    },{
 		      id: 8,	
 		      projectStatus: 1,
@@ -315,41 +325,45 @@ export class ProjectListService {
 		       requiredSkill: {
 		      	dev: false,
 		      	design: true,
-		      	pm: true
+		      	pm: true, content: true,
 		      },
-		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 		      location:'Sydney',
 		      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
 		     volunteers: [{
 		      	vName:'Yale Yu', 
 		      	vAvatar: './assets/yale.png',
 		      	vTitle:'Director Software Engineering'
-		      }]
+		      }],
+		      rejectComment: ''
 		}]
 
 	 	return listOfData;
 	}
 
+	//My project page > Projects I have created
+	//show project created by user, including all statue - inactive, launched, reject, and in review  
 	getMyProjects(){
 		let listOfData: Array<{ 
 		id: number, 
-		projectStatus: number, //0:in review, 1: launched, 2: inactive,
-		isNew: boolean,
+		projectStatus: number, //0:in review, 1: launched, 2: rejected
+		isNew: boolean, //not used in any of the pages yet, nice to have
 		isCharity: boolean,
 		projectName: string,
-		isActive: boolean,
-		picture: string, 
+		isActive: boolean, //To tell if project is active or inactive. do not include this in project status, because active/inactive is a sperate feature
+		picture: string, //project cover photo
 		creator: string, 
 		creatorAvatar: string, 
 		creatorContact: string,
 		creatorTitle: string,
-		requiredSkillText: string,
+		requiredSkillText: string,  //this should also change to object since we're using rich text editotr
 		requiredSkill: object,
-		createdDate: string, 
-		endDate: string,
-		location: string,
-		projectDescription:string,
-		volunteers: object}> = [
+		createdDate: string,  //this should be date object, for now use string for DEMO 
+		endDate: string,  //this should be date object, for now use string for DEMO 
+		location: string,  //not sure how will the location array will look like, maybe change this to locationID and map location frontend?
+		projectDescription:string, //this should be change to object since we are using rich text editor
+		volunteers: object,
+		rejectComment: string}> = [
 		    {
 		      id: 0,
 		      projectStatus: 0,	
@@ -363,9 +377,9 @@ export class ProjectListService {
 		      requiredSkill: {
 		      	dev: true,
 		      	design: true,
-		      	pm: true
+		      	pm: true, content: true,
 		      },
-		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 		      picture: './assets/1.jpeg',
 		      createdDate:'Feb,1,2020',
 		      creatorContact:'info@lexisnexis.com',
@@ -392,7 +406,8 @@ export class ProjectListService {
 		      	vName:'Chenhui Xiao', 
 		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
-		      }]
+		      }],
+		      rejectComment: ''
 		  	},{
 		      id: 1,	
 		      projectStatus: 1,	
@@ -404,9 +419,9 @@ export class ProjectListService {
 		       requiredSkill: {
 		      	dev: true,
 		      	design: true,
-		      	pm: true
+		      	pm: true, content: true,
 		      },
-		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 		      creator: 'Jessica Wang',
 		      creatorTitle:'Program Manager',
 		      creatorAvatar:'./assets/jessica.png',
@@ -427,10 +442,11 @@ export class ProjectListService {
 		      	vName:'Chenhui Xiao', 
 		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
-		      }]
+		      }],
+		      rejectComment: ''
 		    },{
 		      id:2,	
-		      projectStatus: 2,	
+		      projectStatus: 1,	
 		      isActive: false,
 		      projectName: 'UX Meets Technology Sharing',
 		      picture: './assets/7.jpg',
@@ -443,10 +459,9 @@ export class ProjectListService {
 		       requiredSkill: {
 		      	dev: true,
 		      	design: false,
-		      	pm: true
+		      	pm: true, content: true,
 		      },
-		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
-		      
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',		      
 		      createdDate:'Jan,15,2020',
 		      endDate:'July,15,2020',
 		      location:'Sydney',
@@ -455,36 +470,67 @@ export class ProjectListService {
 		      	vName:'Chenhui Xiao', 
 		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
-		      }]
+		      }],
+		      rejectComment: ''
+		    },{
+		      id:3,	
+		      projectStatus: 2,	
+		      isActive: true,
+		      projectName: 'LA Customer Interview',
+		      picture: './assets/6.jpg',
+		      isNew: true,
+		      isCharity: false,
+		      creator: 'Hank Liu',
+		      creatorContact:'info@lexisnexis.com',
+		      creatorTitle:'UX Mgr',
+		      creatorAvatar:'./assets/hank.png',
+		       requiredSkill: {
+		      	dev: true,
+		      	design: false,
+		      	pm: false, 
+		      	content: false,
+		      },
+		      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',      
+		      createdDate:'Jan,15,2020',
+		      endDate:'May,12,2020',
+		      location:'Shanghai',
+		      projectDescription: 'Go out and interview our customers to know what they think about LA.',
+		      volunteers: [],
+		      rejectComment: 'Please edit your project to include an initial plan in the project description and submit again.'
 		    }]
 
 		return listOfData;    
 	}
 
+	//My project page > Projects I have joined
+	//show launched projects user have joined.
 	getJoinedProjects(){
 		let listOfData: Array<{ 
 		id: number, 
-		projectStatus: number, //0:in review, 1: launched, 2: inactive,
+		projectStatus: number, //0:in review, 1: launched, 2: rejected
 		isNew: boolean,
 		isCharity: boolean,
 		projectName: string,
-		picture: string, 
+		picture: string, //project cover photo
+		isActive: boolean, //To tell if project is active or inactive. do not include this in project status, because active/inactive is a sperate feature
 		creator: string, 
 		creatorAvatar: string, 
 		creatorContact: string,
 		creatorTitle: string,
-		requiredSkillText: string,
+		requiredSkillText: string,  //this should also change to object since we're using rich text editotr
 		requiredSkill: object,
-		createdDate: string, 
-		endDate: string,
-		location: string,
-		projectDescription:string,
-		volunteers: object}> = [
+		createdDate: string,  //this should be date object, for now use string for DEMO 
+		endDate: string,  //this should be date object, for now use string for DEMO 
+		location: string,  //not sure how will the location array will look like, maybe change this to locationID and map location frontend?
+		projectDescription:string, //this should be change to object since we are using rich text editor
+		volunteers: object,
+		rejectComment: string}> = [
 	    {
 	      id: 0,
 	      projectStatus: 1,	
 	      projectName: 'RELX Rule of Law Project Board',
 	      isNew: true,
+	      isActive: true,
 	      isCharity: true,
 	      creator: 'Min Chen',
 	      creatorTitle:'VP & CTO - APAC',
@@ -492,9 +538,9 @@ export class ProjectListService {
 	      requiredSkill: {
 	      	dev: true,
 	      	design: true,
-	      	pm: true
+	      	pm: true, content: true,
 	      },
-	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 	      picture: './assets/1.jpeg',
 	      createdDate:'Feb,1,2020',
 	      creatorContact:'info@lexisnexis.com',
@@ -521,31 +567,35 @@ export class ProjectListService {
 		      	vName:'Chenhui Xiao', 
 		      	vAvatar: './assets/chenhui.png',
 		      	vTitle: 'UX Designer II'
-		      }]
+		      }],
+		      rejectComment: ''
 	  	},]
 		return listOfData;    
 	}
 
+	//Approval List > In Review Projects
+	//show all projects in review. Do not show rejected projects.
 	getNeedApprovedProjects(){ 
 		let listOfData: Array<{ 
 		id: number, 
-		projectStatus: number, //0:in review, 1: launched, 2: inactive,
+		projectStatus: number, //0:in review, 1: launched, 2: rejected
 		isNew: boolean,
 		isCharity: boolean,
-		isActive: boolean,
+		isActive: boolean, //To tell if project is active or inactive. do not include this in project status, because active/inactive is a sperate feature
 		projectName: string,
-		picture: string, 
+		picture: string, //project cover photo
 		creator: string, 
 		creatorAvatar: string, 
 		creatorContact: string,
 		creatorTitle: string,
-		requiredSkillText: string,
+		requiredSkillText: string,  //this should also change to object since we're using rich text editotr
 		requiredSkill: object,
-		createdDate: string, 
-		endDate: string,
-		location: string,
-		projectDescription:string,
-		volunteers: object}> = [
+		createdDate: string,  //this should be date object, for now use string for DEMO 
+		endDate: string,  //this should be date object, for now use string for DEMO 
+		location: string,  //not sure how will the location array will look like, maybe change this to locationID and map location frontend?
+		projectDescription:string, //this should be change to object since we are using rich text editor
+		volunteers: object,
+		rejectComment: string}> = [
 	    {
 	      id: 0,
 	      projectStatus: 0,	
@@ -559,16 +609,17 @@ export class ProjectListService {
 	      requiredSkill: {
 	      	dev: true,
 	      	design: true,
-	      	pm: true
+	      	pm: true, content: true,
 	      },
-	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 	      picture: './assets/1.jpeg',
 	      createdDate:'Feb,1,2020',
 	      creatorContact:'info@lexisnexis.com',
 	      endDate:'Feb,1,2021',
 	      location:'Shanghai',
 	      projectDescription: 'Expanding the Rule of Law is our company mission and there are a number of fantastic projects around the world to help people in need.  There are also a lot of employees across RELX that would like to help, but aren’t sure how.  A new Rule of Law Project Board would help connect volunteers with projects to better achieve our company mission and help people!',
-	      volunteers: []
+	      volunteers: [],
+	      rejectComment: ''
 	  	},{
 	      id: 1,	
 	      projectStatus: 0,	
@@ -580,9 +631,9 @@ export class ProjectListService {
 	       requiredSkill: {
 	      	dev: true,
 	      	design: true,
-	      	pm: true
+	      	pm: true, content: true,
 	      },
-	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 	      creator: 'Jessica Wang',
 	      creatorTitle:'Program Manager',
 	      creatorAvatar:'./assets/jessica.png',
@@ -591,7 +642,8 @@ export class ProjectListService {
 	      endDate:'July,15,2020',
 	      location:'Sydney',
 	      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
-	      volunteers: []
+	      volunteers: [],
+	      rejectComment: ''
 	    },{
 	      id:2,	
 	      projectStatus: 0,	
@@ -599,7 +651,7 @@ export class ProjectListService {
 	      picture: './assets/7.jpg',
 	      isNew: true,
 	      isCharity: false,
-	      isActive: false,
+	      isActive: true,
 	      creator: 'Jessica Wang',
 	      creatorTitle:'Program Manager',
 	      creatorContact:'info@lexisnexis.com',
@@ -607,42 +659,45 @@ export class ProjectListService {
 	       requiredSkill: {
 	      	dev: true,
 	      	design: false,
-	      	pm: true
+	      	pm: true, content: true,
 	      },
-	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
-	      
+	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',	      
 	      createdDate:'Jan,15,2020',
 	      endDate:'July,15,2020',
 	      location:'Sydney',
 	      projectDescription: 'Exploring ideas to descrease negative NPS detractor for Small Law & Bar segement.',
-	     volunteers: []
+	     volunteers: [],
+	     rejectComment: ''
 	    }]
 
 
 	    return listOfData;
 	}
 
+	//Approval List > Launched Projects
+	//show all launched and inactive projects. Do not show rejected projects.
 	getApprovedProjects(){
 
 		let listOfData: Array<{ 
 		id: number, 
-		projectStatus: number, //0:in review, 1: launched, 2: inactive,
+		projectStatus: number, //0:in review, 1: launched, 2: rejected
 		isNew: boolean,
 		isCharity: boolean,
-		isActive: boolean,
+		isActive: boolean, //To tell if project is active or inactive. do not include this in project status, because active/inactive is a sperate feature
 		projectName: string,
-		picture: string, 
+		picture: string, //project cover photo
 		creator: string, 
 		creatorAvatar: string, 
 		creatorContact: string,
 		creatorTitle: string,
-		requiredSkillText: string,
+		requiredSkillText: string,  //this should also change to object since we're using rich text editotr
 		requiredSkill: object,
-		createdDate: string, 
-		endDate: string,
-		location: string,
-		projectDescription:string,
-		volunteers: object}> = [
+		createdDate: string,  //this should be date object, for now use string for DEMO 
+		endDate: string,  //this should be date object, for now use string for DEMO 
+		location: string,  //not sure how will the location array will look like, maybe change this to locationID and map location frontend?
+		projectDescription:string, //this should be change to object since we are using rich text editor
+		volunteers: object,
+		rejectComment: string}> = [
 	    {
 	      id: 0,
 	      projectStatus:1,	
@@ -656,9 +711,9 @@ export class ProjectListService {
 	      requiredSkill: {
 	      	dev: true,
 	      	design: true,
-	      	pm: true
+	      	pm: true, content: true,
 	      },
-	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 	      picture: './assets/1.jpeg',
 	      createdDate:'Feb,1,2020',
 	      creatorContact:'info@lexisnexis.com',
@@ -677,7 +732,8 @@ export class ProjectListService {
 	      	vName:'Chenhui Xiao', 
 	      	vAvatar: './assets/chenhui.png',
 	      	vTitle: 'UX Designer II'
-	      }]
+	      }],
+	      rejectComment: ''
 	  	},{
 	      id: 1,	
 	      projectStatus: 1,	
@@ -689,9 +745,9 @@ export class ProjectListService {
 	       requiredSkill: {
 	      	dev: true,
 	      	design: true,
-	      	pm: true
+	      	pm: true, content: true,
 	      },
-	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',
+	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',
 	      creator: 'Jessica Wang',
 	      creatorTitle:'Program Manager',
 	      creatorAvatar:'./assets/jessica.png',
@@ -712,7 +768,8 @@ export class ProjectListService {
 	      	vName:'Chenhui Xiao', 
 	      	vAvatar: './assets/chenhui.png',
 	      	vTitle: 'UX Designer II'
-	      }]
+	      }],
+	      rejectComment: ''
 	    },{
 	      id:2,	
 	      projectStatus: 2,	
@@ -728,9 +785,9 @@ export class ProjectListService {
 	       requiredSkill: {
 	      	dev: true,
 	      	design: false,
-	      	pm: true
+	      	pm: true, content: true,
 	      },
-	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, caontent, or project management. There is a lot to be done :)',	      
+	      requiredSkillText: 'We will need every talents for this project! Weclome to apply no matter if you have skills as developer, designer, content, or project management. There is a lot to be done :)',	      
 	      createdDate:'Jan,15,2020',
 	      endDate:'July,15,2020',
 	      location:'Sydney',
@@ -747,7 +804,8 @@ export class ProjectListService {
 	      	vName:'Chenhui Xiao', 
 	      	vAvatar: './assets/chenhui.png',
 	      	vTitle: 'UX Designer II'
-	      }]
+	      }],
+	      rejectComment: ''
 	    }]
 
 	    return listOfData;

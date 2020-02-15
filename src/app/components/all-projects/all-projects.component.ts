@@ -44,7 +44,6 @@ export class AllProjectsComponent implements OnInit {
   			this.listOfData = data;
   			this.abbreviateVolenteers();
   			console.log(data, 'project list');
-        this.radioValue = 1;
   		})
   	}
 
@@ -66,16 +65,57 @@ export class AllProjectsComponent implements OnInit {
 
   	//this is for table filter dropdown, needs a seperate function to extract from project list
   	//it's also used for card view filter dropdown
-  	listOfFilterLocation = [{ text: 'Remote', value: 'Remote' }, { text: 'Shanghai', value: 'Shanghai' },{ text: 'Sydney', value: 'Sydney' }];
-  	listOfSearchLocation: string[] = [];
+    listOfFilterLocation = [
+      {
+        value: 'LexisNexis',
+        label: 'LexisNexis',
+        children: [
+          {
+            value: 'APAC',
+            label: 'APAC',
+            children: [
+              {
+                value: 'Shanghai',
+                label: 'Shanghai',
+                isLeaf: true
+              }
+            ]
+          },
+          {
+            value: 'NARS',
+            label: 'NARS',
+            isLeaf: true
+          }
+        ]
+      },
+      {
+        value: 'Elsevier',
+        label: 'Elsevier',
+        children: [
+          {
+            value: 'NARS',
+            label: 'NARS',
+            children: [
+              {
+                value: 'New York',
+                label: 'New York',
+                isLeaf: true
+              }
+            ]
+          },
+          {
+            value: 'CEMEA',
+            label: 'CEMEA',
+            isLeaf: true
+          }
+        ]
+      }
+    ]
+    locationValue: string[] | null = null;
+    filterLocation(values: string[]): void {
+      console.log('location:', this.locationValue);
+    }
 
-  	sortName: string | null = null;
-  	sortValue: string | null = null;
-
-  	//sort and search function for table
-  	//blank for now
-	sort(sortName: string, value: string): void {}
-  	search(listOfSearchLocation: string[]): void {}
 
   	//Change view btns
   	//0: table; 1:card
