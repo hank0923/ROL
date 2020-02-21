@@ -1,7 +1,7 @@
 <ngx-spinner bdOpacity=0.4 bdColor="rgba(255,255,255,0.35)" size="default" color="#565656" type="ball-clip-rotate" [fullScreen]="true">
 </ngx-spinner>
 <nz-content class="c-page-height">
-  <span>
+  <span *ngIf="isCreator && data.isActive">
     <div nz-row class="bg-white py-2 px-2 mt-1" *ngIf="data.projectStatus !== 2">
       <div nz-col="24">
         <nz-steps [nzCurrent]="data.projectStatus + 1">
@@ -107,7 +107,7 @@
         </nz-card>
       </div>
       <div class="pl-1 pb-1" *ngIf="canApprove && data.isCharity">
-        <nz-card [nzTitle]="null" nzIcon="team">
+        <nz-card [nzTitle]="null" nzIcon="team" [ngClass]="{'opacity60': !data.isActive}">
           <h3>This is a charity project</h3>
           <button class="c-download-btn d-flex flex-direction-column align-items-center justify-content-center" nzSize="large" nz-button nzBlock><i nz-icon nzType="audit" nzTheme="outline" style="font-size: 1.74em;"></i>Download supporting document</button>
         </nz-card>
