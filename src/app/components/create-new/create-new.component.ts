@@ -37,7 +37,7 @@ export class CreateNewComponent implements OnInit {
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       projectName: [null, [Validators.required]],
-      creatorName: [null, [Validators.required]],
+      // creatorName: [null, [Validators.required]],
       coverPicture: ['A'], //select A value for radio btn group. TBD: use user uploaded picture if user did upload
       creatorEmail: [null, [Validators.email,Validators.required]],
       dateRange: [null, [Validators.required]],
