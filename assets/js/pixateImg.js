@@ -9,7 +9,7 @@
  * http://www.codrops.com
  */
 {
-    const passwordInput = document.querySelector('#password');
+    const passwordInput = document.querySelector('#username');
     // const passwordFeedback = document.querySelector('#strength-output');
     // const strengthStr = {
     //     0: 'Worst',
